@@ -10,6 +10,8 @@ private:
 	cMessage *tictocMsg = nullptr;
 	long numSent;
 	long numReceived;
+	simsignal_t transmissionSignal;
+	simsignal_t receptionSignal;
 
 public:
 	virtual ~Txc1();
@@ -36,12 +38,14 @@ void Txc1::initialize()
 	tictocMsg = nullptr;
 	WATCH(numSent);
 	WATCH(numReceived);
+	transmissionSignal = registerSignal("transmissionSignal");
+	receptionSignal = registerSignal("receptionSignal");
 	// Determine if I am Tic or Toc
 	if (strcmp("tic", getName()) == 0)
 	{
 		EV << "Scheduling first send to a random time\n";
 		tictocMsg = new cMessage("DATA");
-		scheduleAt(uniform(0, 1), event);
+		scheduleAt(par("delayTime"), event);
 		// cMessage *msg = new cMessage("tictocMsg");
 		// send (msg, "out");
 		// numSent++;
@@ -72,6 +76,7 @@ void Txc1::handleMessage(cMessage *msg)
 		send(tictocMsg, "out");
 		tictocMsg = nullptr;
 		numSent++;
+		emit(transmissionSignal, numSent);
 	}
 	else
 	{
@@ -79,6 +84,7 @@ void Txc1::handleMessage(cMessage *msg)
 		{
 			EV << "Acknowledgement arrived";
 			numReceived++;
+			emit(receptionSignal, numReceived);
 			delete msg;
 			// cancelEvent(event);
 			tictocMsg = new cMessage("DATA");
