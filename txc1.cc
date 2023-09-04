@@ -94,6 +94,7 @@ void Txc1::handleMessage(cMessage *msg)
 		{
 			EV << "Message Arrived. Sending ACK";
 			numReceived++;
+			emit(receptionSignal, numReceived);
 			delete msg;
 			tictocMsg = new cMessage("ACK");
 			scheduleAt(simTime() + exponential(0.1), event);
