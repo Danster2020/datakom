@@ -37,7 +37,7 @@ void Txc1::initialize()
 	numReceived = 0;
 	event = new cMessage("event");
 	tictocMsg = nullptr;
-	lossProbability = par("lossProbability")
+	lossProbability = par("lossProbability");
 	WATCH(numSent);
 	WATCH(numReceived);
 	transmissionSignal = registerSignal("transmissionSignal");
