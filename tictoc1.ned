@@ -17,6 +17,6 @@ network Tictoc1
 		tic: Txc1;
 		toc: Txc1;
 	connections:
-		tic.out --> { delay = 100ms; } --> toc.in;
+		tic.out --> { delay = 200ms; } --> toc.in;
 		tic.in <--  { delay = 100ms; } <-- toc.out;
 }
