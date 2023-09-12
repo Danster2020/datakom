@@ -92,10 +92,10 @@ void Txc1::handleMessage(cMessage *msg)
 		{
 			EV << "Acknowledgement arrived";
 			numReceived++;
-			emit(receptionSignal, numReceived);
+			msgCounter++;
+			emit(receptionSignal, msgCounter);
 			delete msg;
 			delete tictocMsg;
-			// cancelEvent(event);
 			cancelEvent(event);
 			tictocMsg = new cMessage("DATA");
 			scheduleAt(simTime() + par("delayTime"), event);
