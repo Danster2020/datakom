@@ -82,9 +82,8 @@ void Txc1::handleMessage(cMessage *msg)
 		if (strcmp("tic", getName()) == 0)
 		{
 			tictocMsg = new cMessage("DATA");
-			scheduleAt(simTime()+1.0, event);
+			scheduleAt(simTime() + 1.0, event);
 		}
-		
 	}
 	else
 	{
@@ -98,14 +97,20 @@ void Txc1::handleMessage(cMessage *msg)
 			tictocMsg = new cMessage("DATA");
 			scheduleAt(simTime() + 1.0, event);
 		}
+
+		if (uniform(0, 1) < lossProbability)
+		{
+			EV << "Message is lost";
+			delete msg;
+		}
 		else
 		{
 			EV << "Message Arrived. Sending ACK";
 			numReceived++;
 			emit(receptionSignal, numReceived);
 			delete msg;
-			tictocMsg = new cMessage("ACK");
-			scheduleAt(simTime() + exponential(0.1), event);
+			// tictocMsg = new cMessage("ACK");
+			// scheduleAt(simTime() + exponential(0.1), event);
 		}
 	}
 }
