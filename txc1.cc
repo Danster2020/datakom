@@ -10,6 +10,7 @@ private:
 	cMessage *tictocMsg = nullptr;
 	long numSent;
 	long numReceived;
+	long msgCounter;
 	double lossProbability;
 	simsignal_t transmissionSignal;
 	simsignal_t receptionSignal;
@@ -78,7 +79,7 @@ void Txc1::handleMessage(cMessage *msg)
 		send(tictocMsg, "out");
 		tictocMsg = nullptr;
 		numSent++;
-		emit(transmissionSignal, numSent);
+		emit(transmissionSignal, msgCounter);
 		if (strcmp("tic", getName()) == 0)
 		{
 			tictocMsg = new cMessage("DATA");
@@ -93,9 +94,11 @@ void Txc1::handleMessage(cMessage *msg)
 			numReceived++;
 			emit(receptionSignal, numReceived);
 			delete msg;
+			delete tictocMsg;
 			// cancelEvent(event);
+			cancelEvent(event);
 			tictocMsg = new cMessage("DATA");
-			scheduleAt(simTime() + 1.0, event);
+			scheduleAt(simTime() + par("delayTime"), event);
 		}
 
 		if (uniform(0, 1) < lossProbability)
