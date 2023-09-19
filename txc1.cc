@@ -114,7 +114,7 @@ void Txc1::handleMessage(cMessage *msg)
 				emit(receptionSignal, numReceived);
 				delete msg;
 				tictocMsg = new cMessage("ACK");
-				scheduleAt(simTime() + exponential(0.1), event);
+				scheduleAt(simTime() + exponential(0.1), event); //TODO change to? scheduleAt(simTime() + par("delayTime"), event);
 			}
 		}
 	}
