@@ -111,6 +111,7 @@ void Txc1::handleMessage(cMessage *msg)
 			{
 				EV << "Message Arrived. Sending ACK";
 				numReceived++;
+				// msgCounter++; add this line to increase from 0
 				emit(receptionSignal, numReceived);
 				delete msg;
 				tictocMsg = new cMessage("ACK");
