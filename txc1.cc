@@ -43,7 +43,8 @@ void Txc1::initialize()
 	WATCH(numReceived);
 	transmissionSignal = registerSignal("transmissionSignal");
 	receptionSignal = registerSignal("receptionSignal");
-	// Determine if I am Tic or Toc
+
+	// if tic
 	if (strcmp("tic", getName()) == 0)
 	{
 		EV << "Scheduling first send to a random time\n";
@@ -55,24 +56,9 @@ void Txc1::initialize()
 	}
 }
 
-// void Txc1::handleMessage(cMessage *msg)
-// {
-// 	numReceived++;
-// 	send(msg, "out");
-// 	numSent++;
-// }
-
-void Txc1::finish()
-{
-	EV << "Sent: " << numSent << endl;
-	EV << "Received: " << numReceived << endl;
-
-	recordScalar("#Sent", numSent);
-	recordScalar("#received", numReceived);
-}
-
 void Txc1::handleMessage(cMessage *msg)
 {
+	// if transmit
 	if (msg == event)
 	{
 		EV << "Timeout is over, sending message";
@@ -80,14 +66,17 @@ void Txc1::handleMessage(cMessage *msg)
 		tictocMsg = nullptr;
 		numSent++;
 		emit(transmissionSignal, msgCounter);
+		
+		// if tic
 		if (strcmp("tic", getName()) == 0)
 		{
 			tictocMsg = new cMessage("DATA");
-			scheduleAt(simTime() + 1.0, event);
+			scheduleAt(simTime() + 2.0, event); // fixed transmission intervall
 		}
 	}
 	else
 	{
+		// if reception from toc
 		if (strcmp("tic", getName()) == 0)
 		{
 			EV << "Acknowledgement arrived";
@@ -102,12 +91,13 @@ void Txc1::handleMessage(cMessage *msg)
 		}
 		else
 		{
+			// if message is lost by probability
 			if (uniform(0, 1) < lossProbability)
 			{
 				EV << "Message is lost";
 				delete msg;
 			}
-			else
+			else // toc receive msg from tic
 			{
 				EV << "Message Arrived. Sending ACK";
 				numReceived++;
@@ -115,8 +105,17 @@ void Txc1::handleMessage(cMessage *msg)
 				emit(receptionSignal, numReceived);
 				delete msg;
 				tictocMsg = new cMessage("ACK");
-				scheduleAt(simTime() + exponential(0.1), event); //TODO change to? scheduleAt(simTime() + par("delayTime"), event);
+				scheduleAt(simTime() + exponential(0.1), event); // TODO change to? scheduleAt(simTime() + par("delayTime"), event);
 			}
 		}
 	}
+}
+
+void Txc1::finish()
+{
+	EV << "Sent: " << numSent << endl;
+	EV << "Received: " << numReceived << endl;
+
+	recordScalar("#Sent", numSent);
+	recordScalar("#received", numReceived);
 }
