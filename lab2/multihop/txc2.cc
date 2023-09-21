@@ -79,25 +79,26 @@ void Txc2::handleMessage(cMessage *msg)
 			int k = n - 1;
 
 			// #### SIMPLE FORWARD ####
-			// for (int i = 0; i < n; i++)
-			// {
-			// 	EV << "Sending on k: " << i << "\n";
-			// 	send(multihopMsg->dup(), "gate$o", i);
-			// 	txVector.record(numSent);
-			// 	numSent++;
-			// }
-			// duplicatePacketList.push_back(multihopMsg->getTreeId());
-			// multihopMsg = nullptr;
+			for (int i = 0; i < n; i++)
+			{
+				EV << "Sending on k: " << i << "\n";
+				send(multihopMsg->dup(), "gate$o", i);
+				txVector.record(numSent);
+				numSent++;
+			}
+			duplicatePacketList.push_back(multihopMsg->getTreeId());
+			multihopMsg = nullptr;
+			msgCounter++;
 			// #########################
 
 			// #### RANDOM NEXT HOP ####
-			EV << "Timeout is over, sending msg: " << multihopMsg << " on k: " << k << "\n";
-			send(multihopMsg->dup(), "gate$o", k);
-			txVector.record(numSent);
-			numSent++;
-			duplicatePacketList.push_back(msg->getTreeId());
-			multihopMsg = nullptr;
-			msgCounter++;
+			// EV << "Timeout is over, sending msg: " << multihopMsg << " on k: " << k << "\n";
+			// send(multihopMsg->dup(), "gate$o", k);
+			// txVector.record(numSent);
+			// numSent++;
+			// duplicatePacketList.push_back(multihopMsg->getTreeId());
+			// multihopMsg = nullptr;
+			// msgCounter++;
 			// #########################
 
 			// schedule new message

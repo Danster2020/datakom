@@ -1,0 +1,45 @@
+version 2
+run General-3-20230921-22:34:24-7056
+attr configname General
+attr datetime 20230921-22:34:24
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Network3
+attr processid 7056
+attr repetition 3
+attr replication #3
+attr resultdir results
+attr runnumber 3
+attr seedset 3
+param Network3.node[*].transmissionTime "uniform(1s, 2s)"
+param Network3.node[*].delayTime "uniform(0.01s, 0.2s)"
+param Network3.node[*].processingTime exponential(0.01s)
+param Network3.node[0].lossProbability 0
+param Network3.node[1].lossProbability 0.1
+param Network3.node[2].lossProbability 0.1
+param Network3.node[3].lossProbability "0.1 / 2"
+param Network3.node[4].lossProbability "0.1 / 2"
+param Network3.node[6].lossProbability "0.1 * 2"
+param Network3.node[7].lossProbability "0.1 * 2"
+param Network3.node[5].lossProbability "0.1 * 3"
+
+scalar Network3.node[0] #Sent 320
+scalar Network3.node[0] #received 0
+scalar Network3.node[1] #Sent 465
+scalar Network3.node[1] #received 0
+scalar Network3.node[2] #Sent 304
+scalar Network3.node[2] #received 0
+scalar Network3.node[3] #Sent 459
+scalar Network3.node[3] #received 0
+scalar Network3.node[4] #Sent 459
+scalar Network3.node[4] #received 0
+scalar Network3.node[5] #Sent 0
+scalar Network3.node[5] #received 194
+scalar Network3.node[6] #Sent 222
+scalar Network3.node[6] #received 0
+scalar Network3.node[7] #Sent 441
+scalar Network3.node[7] #received 0
+

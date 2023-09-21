@@ -1,0 +1,34 @@
+version 2
+run General-0-20230921-21:31:29-5391
+attr configname General
+attr datetime 20230921-21:31:29
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Network1
+attr processid 5391
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param Network1.node[*].transmissionTime "uniform(1s, 2s)"
+param Network1.node[*].delayTime "uniform(0.01s, 0.2s)"
+param Network1.node[*].processingTime exponential(0.01s)
+param Network1.node[*].lossProbability 0.1
+
+scalar Network1.node[0] #Sent 158
+scalar Network1.node[0] #received 0
+scalar Network1.node[1] #Sent 441
+scalar Network1.node[1] #received 0
+scalar Network1.node[2] #Sent 423
+scalar Network1.node[2] #received 0
+scalar Network1.node[3] #Sent 429
+scalar Network1.node[3] #received 0
+scalar Network1.node[4] #Sent 411
+scalar Network1.node[4] #received 0
+scalar Network1.node[5] #Sent 0
+scalar Network1.node[5] #received 125
+
