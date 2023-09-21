@@ -11,6 +11,7 @@ private:
 	long numSent;
 	long numReceived;
 	long msgCounter;
+	
 	double lossProbability;
 	simsignal_t transmissionSignal;
 	simsignal_t receptionSignal;
@@ -36,6 +37,8 @@ void Txc1::initialize()
 {
 	numSent = 0;
 	numReceived = 0;
+	msgCounter = 0;
+
 	event = new cMessage("event");
 	tictocMsg = nullptr;
 	lossProbability = par("lossProbability");
@@ -49,8 +52,8 @@ void Txc1::initialize()
 	{
 		EV << "Scheduling first send to a random time\n";
 		tictocMsg = new cMessage("DATA");
-		scheduleAt(par("delayTime"), event);
-		// scheduleAt(uniform(0,1), event);
+		//scheduleAt(par("delayTime"), event);
+		scheduleAt(uniform(0,1), event);
 		// cMessage *msg = new cMessage("tictocMsg");
 		// send (msg, "out");
 		// numSent++;
@@ -72,7 +75,7 @@ void Txc1::handleMessage(cMessage *msg)
 		if (strcmp("tic", getName()) == 0)
 		{
 			tictocMsg = new cMessage("DATA");
-			scheduleAt(simTime() + 1.0, event); // fixed transmission intervall
+			scheduleAt(simTime() + par("delayTime"), event); // fixed transmission intervall
 		}
 	}
 	else
@@ -102,11 +105,12 @@ void Txc1::handleMessage(cMessage *msg)
 			{
 				EV << "Message Arrived. Sending ACK";
 				numReceived++;
-				// msgCounter++; add this line to increase from 0
+				msgCounter++; //add this line to increase from 0
 				emit(receptionSignal, numReceived);
 				delete msg;
 				tictocMsg = new cMessage("ACK");
-				scheduleAt(simTime() + exponential(0.1), event); // TODO change to? scheduleAt(simTime() + par("delayTime"), event);
+				//scheduleAt(simTime() + exponential(0.1), event); // TODO change to? scheduleAt(simTime() + par("delayTime"), event);
+				scheduleAt(simTime() + par("delayTime"), event);
 			}
 		}
 	}
