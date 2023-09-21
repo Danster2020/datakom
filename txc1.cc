@@ -71,7 +71,7 @@ void Txc1::handleMessage(cMessage *msg)
 		if (strcmp("tic", getName()) == 0)
 		{
 			tictocMsg = new cMessage("DATA");
-			scheduleAt(simTime() + 2.0, event); // fixed transmission intervall
+			scheduleAt(simTime() + 1.0, event); // fixed transmission intervall
 		}
 	}
 	else
