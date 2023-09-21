@@ -79,26 +79,27 @@ void Txc2::handleMessage(cMessage *msg)
 			int k = n - 1;
 
 			// #### SIMPLE FORWARD ####
-			for (int i = 0; i < n; i++)
-			{
-				EV << "Sending on k: " << i << "\n";
-				send(multihopMsg->dup(), "gate$o", i);
-				txVector.record(numSent);
-				numSent++;
-			}
-			duplicatePacketList.push_back(multihopMsg->getTreeId());
-			multihopMsg = nullptr;
-			msgCounter++;
-			// #########################
-
-			// #### RANDOM NEXT HOP ####
-			// EV << "Timeout is over, sending msg: " << multihopMsg << " on k: " << k << "\n";
-			// send(multihopMsg->dup(), "gate$o", k);
-			// txVector.record(numSent);
-			// numSent++;
+			// for (int i = 0; i < n; i++)
+			// {
+			// 	EV << "Sending on k: " << i << "\n";
+			// 	send(multihopMsg->dup(), "gate$o", i);
+			// 	txVector.record(numSent);
+			// 	numSent++;
+			// }
 			// duplicatePacketList.push_back(multihopMsg->getTreeId());
 			// multihopMsg = nullptr;
 			// msgCounter++;
+			// #########################
+
+			// #### RANDOM NEXT HOP ####
+			int randomGate = intuniform(0, n - 1); // needed for network 3
+			EV << "Timeout is over, sending msg: " << multihopMsg << " on k: " << randomGate << "\n";
+			send(multihopMsg->dup(), "gate$o", randomGate);
+			txVector.record(numSent);
+			numSent++;
+			// duplicatePacketList.push_back(multihopMsg->getTreeId());
+			multihopMsg = nullptr;
+			msgCounter++;
 			// #########################
 
 			// schedule new message
@@ -114,29 +115,29 @@ void Txc2::handleMessage(cMessage *msg)
 			   << "\n";
 
 			// #### SIMPLE FORWARD ####
-			for (int i = 0; i < n; i++)
-			{
-				EV << "Sending on k: " << i << "\n";
-				send(multihopMsg->dup(), "gate$o", i);
-				txVector.record(numSent);
-				numSent++;
-			}
-			multihopMsg = nullptr;
+			// for (int i = 0; i < n; i++)
+			// {
+			// 	EV << "Sending on k: " << i << "\n";
+			// 	send(multihopMsg->dup(), "gate$o", i);
+			// 	txVector.record(numSent);
+			// 	numSent++;
+			// }
+			// multihopMsg = nullptr;
 			// #########################
 
 			// #### RANDOM NEXT HOP ####
-			// int kMin = 1;
+			int kMin = 1;
 			//  prevents backflow in node4
-			//  if (getIndex() == 4)
-			//  {
-			//  	kMin = 2;
-			//  }
+			if (getIndex() == 4)
+			{
+				kMin = 2;
+			}
 
-			// int k = intuniform(kMin, n - 1);
-			// send(multihopMsg, "gate$o", k);
-			// txVector.record(numSent);
-			// numSent++;
-			// multihopMsg = nullptr;
+			int k = intuniform(kMin, n - 1);
+			send(multihopMsg, "gate$o", k);
+			txVector.record(numSent);
+			numSent++;
+			multihopMsg = nullptr;
 			// #########################
 		}
 	}
@@ -162,19 +163,25 @@ void Txc2::handleMessage(cMessage *msg)
 			else
 			{
 
-				if (std::find(duplicatePacketList.begin(), duplicatePacketList.end(), msg->getTreeId()) != duplicatePacketList.end())
-				{
-					EV << "This is a duplicate packet. Deleting."
-					   << "\n";
-					delete msg;
-				}
-				else
-				{
-					EV << "This is the first time we receive this message."
-					   << "\n";
-					duplicatePacketList.push_back(msg->getTreeId());
-					forwardMessage(msg);
-				}
+				// #### SIMPLE FORWARD ####
+				// if (std::find(duplicatePacketList.begin(), duplicatePacketList.end(), msg->getTreeId()) != duplicatePacketList.end())
+				// {
+				// 	EV << "This is a duplicate packet. Deleting."
+				// 	   << "\n";
+				// 	delete msg;
+				// }
+				// else
+				// {
+				// 	EV << "This is the first time we receive this message."
+				// 	   << "\n";
+				// 	duplicatePacketList.push_back(msg->getTreeId());
+				// 	forwardMessage(msg);
+				// }
+				// #########################
+
+				// #### RANDOM NEXT HOP ####
+				forwardMessage(msg);
+				// #########################
 			}
 		}
 	}
