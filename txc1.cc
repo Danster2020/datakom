@@ -50,6 +50,7 @@ void Txc1::initialize()
 		EV << "Scheduling first send to a random time\n";
 		tictocMsg = new cMessage("DATA");
 		scheduleAt(par("delayTime"), event);
+		// scheduleAt(uniform(0,1), event);
 		// cMessage *msg = new cMessage("tictocMsg");
 		// send (msg, "out");
 		// numSent++;
