@@ -53,6 +53,6 @@ void Txc1::forwardMessage(cMessage *msg)
 	// using our higher-numbered gate.
 	int n = gateSize("gate");
 	int k = n - 1;
-	EV << "Forwarding message  " << msg << "on gate[" << k << "\n";
+	EV << "Forwarding message " << msg << " on gate[" << k << "]\n";
 	send(msg, "gate$o", k);
 }
