@@ -71,11 +71,11 @@ void Txc1::handleMessage(cMessage *msg)
 		numSent++;
 		emit(transmissionSignal, msgCounter);
 		
-		// if tic
+		// if tic sent failed?
 		if (strcmp("tic", getName()) == 0)
 		{
 			tictocMsg = new cMessage("DATA");
-			scheduleAt(simTime() + par("delayTime"), event); // fixed transmission intervall
+			scheduleAt(simTime() + 1.0, event); // fixed transmission intervall
 		}
 	}
 	else
