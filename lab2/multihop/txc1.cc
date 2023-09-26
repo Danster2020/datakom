@@ -59,6 +59,7 @@ void Txc1::handleMessage(cMessage *msg)
 {
 	numReceived++;
 
+	// if source node (0)
 	if (getIndex() == 0)
 	{
 		msgCounter++;
@@ -67,7 +68,7 @@ void Txc1::handleMessage(cMessage *msg)
 		char msgname[20];
 		sprintf(msgname, "DATA-%d", msgCounter);
 		cMessage *msg = new cMessage(msgname);
-		scheduleAt(simTime() + 1.0, msg);
+		scheduleAt(simTime() + exponential(5.0), msg);
 	}
 
 	if (getIndex() == 5)
