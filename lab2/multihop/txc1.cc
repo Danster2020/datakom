@@ -6,9 +6,16 @@ using namespace omnetpp;
 class Txc1 : public cSimpleModule
 {
 private:
+	cMessage *event = nullptr;
+	cMessage *multihopMsg = nullptr;
 	long msgCounter;
 	long numSent;
 	long numReceived;
+	cOutVector txVector;
+	cOutVector rxVector;
+
+public:
+	virtual ~Txc1();
 
 protected:
 	virtual void initialize();
@@ -19,6 +26,12 @@ protected:
 
 Define_Module(Txc1);
 
+Txc1::~Txc1()
+{
+	cancelAndDelete(event);
+	delete multihopMsg;
+}
+
 void Txc1::initialize()
 {
 	msgCounter = 0;
@@ -26,6 +39,9 @@ void Txc1::initialize()
 	numReceived = 0;
 	WATCH(numSent);
 	WATCH(numReceived);
+	event = new cMessage("event");
+	txVector.setName("txVector");
+	rxVector.setName("rxVector");
 
 	// start messaging if first node
 	if (getIndex() == 0)
@@ -34,8 +50,8 @@ void Txc1::initialize()
 		EV << "Scheduling first send to a random time\n";
 		char msgname[20];
 		sprintf(msgname, "DATA-%d", msgCounter);
-		cMessage *msg = new cMessage(msgname);
-		scheduleAt(par("delayTime"), msg);
+		multihopMsg = new cMessage(msgname);
+		scheduleAt(par("delayTime"), event);
 	}
 }
 
@@ -58,6 +74,8 @@ void Txc1::handleMessage(cMessage *msg)
 	{
 		// message arrived
 		EV << "Message " << msg << " arrived.\n";
+		//numReceived++;
+		rxVector.record(numReceived);
 		delete msg;
 	}
 	else
@@ -65,6 +83,7 @@ void Txc1::handleMessage(cMessage *msg)
 		// message has to be forwarded
 		forwardMessage(msg);
 		numSent++;
+		txVector.record(numSent);
 	}
 }
 
@@ -85,6 +104,6 @@ void Txc1::finish()
 	EV << "Node" << getIndex() << " Received: " << numReceived << endl;
 	EV << "\n";
 
-	recordScalar("#Sent", numSent);
-	recordScalar("#received", numReceived);
+	//recordScalar("#Sent", numSent);
+	//recordScalar("#received", numReceived);
 }
