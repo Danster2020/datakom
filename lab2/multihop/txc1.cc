@@ -59,6 +59,7 @@ void Txc1::initialize()
 void Txc1::handleMessage(cMessage *msg)
 {
 	EV << "I am node" << getIndex() << "\n";
+	EV << "I have msg: " << msg << "\n";
 	// numReceived++;
 
 	// if event
@@ -68,29 +69,35 @@ void Txc1::handleMessage(cMessage *msg)
 		int n = gateSize("gate");
 		int k = n - 1;
 		send(multihopMsg, "gate$o", k);
+		numSent++;
 		multihopMsg = nullptr;
+
 		// Create new message if Node 0
 		if (getIndex() == 0)
 		{
+			msgCounter++;
+
 			char msgname[20];
 			sprintf(msgname, "DATA-%d", msgCounter);
 			cMessage *newMsg = new cMessage(msgname);
 
 			// message has to be forwarded
-			forwardMessage(multihopMsg);
-			numSent++;
-			txVector.record(numSent);
+			// forwardMessage(newMsg);
+			EV << "scheduling new msg: " << msg << "\n";
+			scheduleAt(simTime() + exponential(5.0), newMsg);
+			// txVector.record(numSent);
 		}
 	}
 	else
 	{
+
 		// Shall I receive it (if uniform(0,1)>lossProbability)
 		//  If I shall recive, am I the last node
 		if (getIndex() == 5)
 		{
 			// message arrived
 			EV << "Message " << msg << " arrived.\n";
-			// numReceived++;
+			numReceived++;
 			rxVector.record(numReceived);
 			delete msg;
 		}
@@ -98,51 +105,18 @@ void Txc1::handleMessage(cMessage *msg)
 		else
 		{
 			forwardMessage(msg);
-			numSent++;
-			txVector.record(numSent);
+			// txVector.record(numSent);
 		}
 	}
-	// if source node (0)
-	// else if (getIndex() == 0)
-	// {
-	// 	msgCounter++;
-	// 	// EV << "getIndex(): " << getIndex();
-	// 	EV << "Scheduling send to a simtime + time\n";
-	// 	char msgname[20];
-	// 	sprintf(msgname, "DATA-%d", msgCounter);
-	// 	cMessage *newMsg = new cMessage(msgname);
-	// 	scheduleAt(simTime() + exponential(5.0), event);
-	// }
-	// else if (getIndex() == 5)
-	// {
-	// 	// message arrived
-	// 	EV << "Message " << msg << " arrived.\n";
-	// 	// numReceived++;
-	// 	rxVector.record(numReceived);
-	// 	delete msg;
-	// }
-	// else
-	//{
-	//  message has to be forwarded
-	//	forwardMessage(msg);
-	//	numSent++;
-	//	txVector.record(numSent);
-	//}
 }
 
 void Txc1::forwardMessage(cMessage *msg)
 {
-	// for this example, we always receive in the gate with
-	// a lower number out of the two we have. So we forward
-	// using our higher-numbered gate.
-	// int n = gateSize("gate");
-	// int k = n - 1;
-	//EV << "Forwarding message " << msg << " on gate[" << k << "]\n";
-	// send(msg, "gate$o", k);
 	multihopMsg = msg;
+	EV << "forwarding msg: " << msg << "\n";
 	scheduleAt(simTime() + exponential(0.01), event);
-	// sendDelayed(msg, exponential(0.01), "gate$o", k);
-	// sendDelayed(event, exponential(0.01), "gate$o", k);
+	//numSent++;
+	txVector.record(numSent);
 }
 
 void Txc1::finish()
