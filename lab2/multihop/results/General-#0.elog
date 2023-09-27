@@ -1,5 +1,5 @@
 E # 0 t 0 m 1 ce -1 msg -1
-SB v 1286 rid General-0-20230927-01:28:39-12395 b 1000
+SB v 1286 rid General-0-20230927-04:12:17-15000 b 1000
 KF p -1 c "" s ""
 MC id 1 c omnetpp::cModule t Multihop n Multihop cm 1
 MS id 1 d ""
@@ -84,3 +84,543 @@ E # 1 t 0.079587450457 m 2 ce 0 msg 0
 CM id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe -1
 BS id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe 1
 ES t 4.572389392877
+- INFO:Forwarding message (omnetpp::cMessage)event on gate[0]
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 1
+SH sm 2 sg 1572864 pd 0.1
+ES t 0.192146758037
+CL id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 1 cid 8
+
+E # 2 t 0.192146758037 m 3 ce 1 msg 0
+- INFO:I am node1
+CM id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n DATA-0 pe -1
+BS id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n DATA-0 pe 2
+ES t 9.49016781841
+- INFO:Forwarding message (omnetpp::cMessage)event on gate[1]
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 2
+SH sm 3 sg 1572865 pd 0.1
+ES t 0.301378989352
+CL id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 2 cid 9
+
+E # 3 t 0.301378989352 m 4 ce 2 msg 0
+- INFO:I am node2
+CM id 9 tid 9 eid 9 etid 9 c omnetpp::cMessage n DATA-0 pe -1
+BS id 9 tid 9 eid 9 etid 9 c omnetpp::cMessage n DATA-0 pe 3
+ES t 10.059105668774
+- INFO:Forwarding message (omnetpp::cMessage)event on gate[1]
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 3
+SH sm 4 sg 1572865 pd 0.1
+ES t 0.409251000752
+CL id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 3 cid 10
+
+E # 4 t 0.409251000752 m 5 ce 3 msg 0
+- INFO:I am node3
+CM id 10 tid 10 eid 10 etid 10 c omnetpp::cMessage n DATA-0 pe -1
+BS id 10 tid 10 eid 10 etid 10 c omnetpp::cMessage n DATA-0 pe 4
+ES t 9.804071271766
+- INFO:Forwarding message (omnetpp::cMessage)event on gate[1]
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 4
+SH sm 5 sg 1572865 pd 0.1
+ES t 0.514761485619
+CL id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 4 cid 11
+
+E # 5 t 0.514761485619 m 6 ce 4 msg 0
+- INFO:I am node4
+CM id 11 tid 11 eid 11 etid 11 c omnetpp::cMessage n DATA-0 pe -1
+BS id 11 tid 11 eid 11 etid 11 c omnetpp::cMessage n DATA-0 pe 5
+ES t 5.399793617586
+- INFO:Forwarding message (omnetpp::cMessage)event on gate[1]
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 5
+SH sm 6 sg 1572865 pd 0.1
+ES t 0.625143078626
+CL id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 5 cid 12
+
+E # 6 t 0.625143078626 m 7 ce 5 msg 0
+- INFO:I am node5
+CM id 12 tid 12 eid 12 etid 12 c omnetpp::cMessage n DATA-0 pe -1
+BS id 12 tid 12 eid 12 etid 12 c omnetpp::cMessage n DATA-0 pe 6
+ES t 3.050783897234
+- INFO:Message (omnetpp::cMessage)event arrived.
+DM id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 6
+
+E # 7 t 3.050783897234 m 7 ce 6 msg 12
+- INFO:I am node5
+CM id 13 tid 13 eid 13 etid 13 c omnetpp::cMessage n DATA-0 pe -1
+BS id 13 tid 13 eid 13 etid 13 c omnetpp::cMessage n DATA-0 pe 7
+ES t 5.928379881649
+- INFO:Message (omnetpp::cMessage)DATA-0 arrived.
+DM id 12 tid 12 eid 12 etid 12 c omnetpp::cMessage n DATA-0 pe 7
+
+E # 8 t 4.572389392877 m 2 ce 1 msg 7
+- INFO:I am node0
+CM id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n DATA-2 pe -1
+BS id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n DATA-2 pe 8
+ES t 6.338185088565
+- INFO:Forwarding message (omnetpp::cMessage)DATA-2 on gate[0]
+BS id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe 8
+SH sm 2 sg 1572864 pd 0.1
+ES t 4.694624637097
+CL id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe 8 cid 15
+
+E # 9 t 4.694624637097 m 3 ce 8 msg 7
+- INFO:I am node1
+CM id 15 tid 15 eid 15 etid 15 c omnetpp::cMessage n DATA-0 pe -1
+BS id 15 tid 15 eid 15 etid 15 c omnetpp::cMessage n DATA-0 pe 9
+ES t 4.986547982562
+- INFO:Forwarding message (omnetpp::cMessage)DATA-2 on gate[1]
+BS id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe 9
+SH sm 3 sg 1572865 pd 0.1
+ES t 4.827773759896
+CL id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe 9 cid 16
+
+E # 10 t 4.827773759896 m 4 ce 9 msg 7
+- INFO:I am node2
+CM id 16 tid 16 eid 16 etid 16 c omnetpp::cMessage n DATA-0 pe -1
+BS id 16 tid 16 eid 16 etid 16 c omnetpp::cMessage n DATA-0 pe 10
+ES t 6.419554464105
+- INFO:Forwarding message (omnetpp::cMessage)DATA-2 on gate[1]
+BS id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe 10
+SH sm 4 sg 1572865 pd 0.1
+ES t 4.932609780945
+CL id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe 10 cid 17
+
+E # 11 t 4.932609780945 m 5 ce 10 msg 7
+- INFO:I am node3
+CM id 17 tid 17 eid 17 etid 17 c omnetpp::cMessage n DATA-0 pe -1
+BS id 17 tid 17 eid 17 etid 17 c omnetpp::cMessage n DATA-0 pe 11
+ES t 8.179841522199
+- INFO:Forwarding message (omnetpp::cMessage)DATA-2 on gate[1]
+BS id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe 11
+SH sm 5 sg 1572865 pd 0.1
+ES t 5.048298742121
+CL id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe 11 cid 18
+
+E # 12 t 4.986547982562 m 3 ce 9 msg 15
+- INFO:I am node1
+CM id 18 tid 18 eid 18 etid 18 c omnetpp::cMessage n DATA-0 pe -1
+BS id 18 tid 18 eid 18 etid 18 c omnetpp::cMessage n DATA-0 pe 12
+ES t 13.347603984187
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 15 tid 15 eid 15 etid 15 c omnetpp::cMessage n DATA-0 pe 12
+SH sm 3 sg 1572865 pd 0.1
+ES t 5.094074723695
+CL id 15 tid 15 eid 15 etid 15 c omnetpp::cMessage n DATA-0 pe 12 cid 19
+
+E # 13 t 5.048298742121 m 6 ce 11 msg 7
+- INFO:I am node4
+CM id 19 tid 19 eid 19 etid 19 c omnetpp::cMessage n DATA-0 pe -1
+BS id 19 tid 19 eid 19 etid 19 c omnetpp::cMessage n DATA-0 pe 13
+ES t 8.317711578227
+- INFO:Forwarding message (omnetpp::cMessage)DATA-2 on gate[1]
+BS id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe 13
+SH sm 6 sg 1572865 pd 0.1
+ES t 5.15669307065
+CL id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe 13 cid 20
+
+E # 14 t 5.094074723695 m 4 ce 12 msg 15
+- INFO:I am node2
+CM id 20 tid 20 eid 20 etid 20 c omnetpp::cMessage n DATA-0 pe -1
+BS id 20 tid 20 eid 20 etid 20 c omnetpp::cMessage n DATA-0 pe 14
+ES t 7.588434768774
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 15 tid 15 eid 15 etid 15 c omnetpp::cMessage n DATA-0 pe 14
+SH sm 4 sg 1572865 pd 0.1
+ES t 5.220057264553
+CL id 15 tid 15 eid 15 etid 15 c omnetpp::cMessage n DATA-0 pe 14 cid 21
+
+E # 15 t 5.15669307065 m 7 ce 13 msg 7
+- INFO:I am node5
+CM id 21 tid 21 eid 21 etid 21 c omnetpp::cMessage n DATA-0 pe -1
+BS id 21 tid 21 eid 21 etid 21 c omnetpp::cMessage n DATA-0 pe 15
+ES t 14.198539392025
+- INFO:Message (omnetpp::cMessage)DATA-2 arrived.
+DM id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe 15
+
+E # 16 t 5.220057264553 m 5 ce 14 msg 15
+- INFO:I am node3
+CM id 22 tid 22 eid 22 etid 22 c omnetpp::cMessage n DATA-0 pe -1
+BS id 22 tid 22 eid 22 etid 22 c omnetpp::cMessage n DATA-0 pe 16
+ES t 5.588484041878
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 15 tid 15 eid 15 etid 15 c omnetpp::cMessage n DATA-0 pe 16
+SH sm 5 sg 1572865 pd 0.1
+ES t 5.324173044515
+CL id 15 tid 15 eid 15 etid 15 c omnetpp::cMessage n DATA-0 pe 16 cid 23
+
+E # 17 t 5.324173044515 m 6 ce 16 msg 15
+- INFO:I am node4
+CM id 23 tid 23 eid 23 etid 23 c omnetpp::cMessage n DATA-0 pe -1
+BS id 23 tid 23 eid 23 etid 23 c omnetpp::cMessage n DATA-0 pe 17
+ES t 5.779978175136
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 15 tid 15 eid 15 etid 15 c omnetpp::cMessage n DATA-0 pe 17
+SH sm 6 sg 1572865 pd 0.1
+ES t 5.434619169598
+CL id 15 tid 15 eid 15 etid 15 c omnetpp::cMessage n DATA-0 pe 17 cid 24
+
+E # 18 t 5.399793617586 m 6 ce 5 msg 11
+- INFO:I am node4
+CM id 24 tid 24 eid 24 etid 24 c omnetpp::cMessage n DATA-0 pe -1
+BS id 24 tid 24 eid 24 etid 24 c omnetpp::cMessage n DATA-0 pe 18
+ES t 5.501921559581
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 11 tid 11 eid 11 etid 11 c omnetpp::cMessage n DATA-0 pe 18
+SH sm 6 sg 1572865 pd 0.1
+ES t 5.504386098959
+CL id 11 tid 11 eid 11 etid 11 c omnetpp::cMessage n DATA-0 pe 18 cid 25
+
+E # 19 t 5.434619169598 m 7 ce 17 msg 15
+- INFO:I am node5
+CM id 25 tid 25 eid 25 etid 25 c omnetpp::cMessage n DATA-0 pe -1
+BS id 25 tid 25 eid 25 etid 25 c omnetpp::cMessage n DATA-0 pe 19
+ES t 14.372057486791
+- INFO:Message (omnetpp::cMessage)DATA-0 arrived.
+DM id 15 tid 15 eid 15 etid 15 c omnetpp::cMessage n DATA-0 pe 19
+
+E # 20 t 5.501921559581 m 6 ce 18 msg 24
+- INFO:I am node4
+CM id 26 tid 26 eid 26 etid 26 c omnetpp::cMessage n DATA-0 pe -1
+BS id 26 tid 26 eid 26 etid 26 c omnetpp::cMessage n DATA-0 pe 20
+ES t 21.252771202961
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 24 tid 24 eid 24 etid 24 c omnetpp::cMessage n DATA-0 pe 20
+SH sm 6 sg 1572865 pd 0.1
+ES t 5.616979402167
+CL id 24 tid 24 eid 24 etid 24 c omnetpp::cMessage n DATA-0 pe 20 cid 27
+
+E # 21 t 5.504386098959 m 7 ce 18 msg 11
+- INFO:I am node5
+CM id 27 tid 27 eid 27 etid 27 c omnetpp::cMessage n DATA-0 pe -1
+BS id 27 tid 27 eid 27 etid 27 c omnetpp::cMessage n DATA-0 pe 21
+ES t 6.260540367284
+- INFO:Message (omnetpp::cMessage)DATA-0 arrived.
+DM id 11 tid 11 eid 11 etid 11 c omnetpp::cMessage n DATA-0 pe 21
+
+E # 22 t 5.588484041878 m 5 ce 16 msg 22
+- INFO:I am node3
+CM id 28 tid 28 eid 28 etid 28 c omnetpp::cMessage n DATA-0 pe -1
+BS id 28 tid 28 eid 28 etid 28 c omnetpp::cMessage n DATA-0 pe 22
+ES t 15.790055331587
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 22 tid 22 eid 22 etid 22 c omnetpp::cMessage n DATA-0 pe 22
+SH sm 5 sg 1572865 pd 0.1
+ES t 5.708892964037
+CL id 22 tid 22 eid 22 etid 22 c omnetpp::cMessage n DATA-0 pe 22 cid 29
+
+E # 23 t 5.616979402167 m 7 ce 20 msg 24
+- INFO:I am node5
+CM id 29 tid 29 eid 29 etid 29 c omnetpp::cMessage n DATA-0 pe -1
+BS id 29 tid 29 eid 29 etid 29 c omnetpp::cMessage n DATA-0 pe 23
+ES t 24.843088747876
+- INFO:Message (omnetpp::cMessage)DATA-0 arrived.
+DM id 24 tid 24 eid 24 etid 24 c omnetpp::cMessage n DATA-0 pe 23
+
+E # 24 t 5.708892964037 m 6 ce 22 msg 22
+- INFO:I am node4
+CM id 30 tid 30 eid 30 etid 30 c omnetpp::cMessage n DATA-0 pe -1
+BS id 30 tid 30 eid 30 etid 30 c omnetpp::cMessage n DATA-0 pe 24
+ES t 8.917438827428
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 22 tid 22 eid 22 etid 22 c omnetpp::cMessage n DATA-0 pe 24
+SH sm 6 sg 1572865 pd 0.1
+ES t 5.824945359608
+CL id 22 tid 22 eid 22 etid 22 c omnetpp::cMessage n DATA-0 pe 24 cid 31
+
+E # 25 t 5.779978175136 m 6 ce 17 msg 23
+- INFO:I am node4
+CM id 31 tid 31 eid 31 etid 31 c omnetpp::cMessage n DATA-0 pe -1
+BS id 31 tid 31 eid 31 etid 31 c omnetpp::cMessage n DATA-0 pe 25
+ES t 13.849988549599
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 23 tid 23 eid 23 etid 23 c omnetpp::cMessage n DATA-0 pe 25
+SH sm 6 sg 1572865 pd 0.1
+ES t 5.886167469732
+CL id 23 tid 23 eid 23 etid 23 c omnetpp::cMessage n DATA-0 pe 25 cid 32
+
+E # 26 t 5.824945359608 m 7 ce 24 msg 22
+- INFO:I am node5
+CM id 32 tid 32 eid 32 etid 32 c omnetpp::cMessage n DATA-0 pe -1
+BS id 32 tid 32 eid 32 etid 32 c omnetpp::cMessage n DATA-0 pe 26
+ES t 9.499767465557
+- INFO:Message (omnetpp::cMessage)DATA-0 arrived.
+DM id 22 tid 22 eid 22 etid 22 c omnetpp::cMessage n DATA-0 pe 26
+
+E # 27 t 5.886167469732 m 7 ce 25 msg 23
+- INFO:I am node5
+CM id 33 tid 33 eid 33 etid 33 c omnetpp::cMessage n DATA-0 pe -1
+BS id 33 tid 33 eid 33 etid 33 c omnetpp::cMessage n DATA-0 pe 27
+ES t 13.468847339683
+- INFO:Message (omnetpp::cMessage)DATA-0 arrived.
+DM id 23 tid 23 eid 23 etid 23 c omnetpp::cMessage n DATA-0 pe 27
+
+E # 28 t 5.928379881649 m 7 ce 7 msg 13
+- INFO:I am node5
+CM id 34 tid 34 eid 34 etid 34 c omnetpp::cMessage n DATA-0 pe -1
+BS id 34 tid 34 eid 34 etid 34 c omnetpp::cMessage n DATA-0 pe 28
+ES t 11.6080745902
+- INFO:Message (omnetpp::cMessage)DATA-0 arrived.
+DM id 13 tid 13 eid 13 etid 13 c omnetpp::cMessage n DATA-0 pe 28
+
+E # 29 t 6.260540367284 m 7 ce 21 msg 27
+- INFO:I am node5
+CM id 35 tid 35 eid 35 etid 35 c omnetpp::cMessage n DATA-0 pe -1
+BS id 35 tid 35 eid 35 etid 35 c omnetpp::cMessage n DATA-0 pe 29
+ES t 6.889912414474
+- INFO:Message (omnetpp::cMessage)DATA-0 arrived.
+DM id 27 tid 27 eid 27 etid 27 c omnetpp::cMessage n DATA-0 pe 29
+
+E # 30 t 6.338185088565 m 2 ce 8 msg 14
+- INFO:I am node0
+CM id 36 tid 36 eid 36 etid 36 c omnetpp::cMessage n DATA-2 pe -1
+BS id 36 tid 36 eid 36 etid 36 c omnetpp::cMessage n DATA-2 pe 30
+ES t 12.714323599683
+- INFO:Forwarding message (omnetpp::cMessage)DATA-2 on gate[0]
+BS id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n DATA-2 pe 30
+SH sm 2 sg 1572864 pd 0.1
+ES t 6.448399407308
+CL id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n DATA-2 pe 30 cid 37
+
+E # 31 t 6.419554464105 m 4 ce 10 msg 16
+- INFO:I am node2
+CM id 37 tid 37 eid 37 etid 37 c omnetpp::cMessage n DATA-0 pe -1
+BS id 37 tid 37 eid 37 etid 37 c omnetpp::cMessage n DATA-0 pe 31
+ES t 10.781160439316
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 16 tid 16 eid 16 etid 16 c omnetpp::cMessage n DATA-0 pe 31
+SH sm 4 sg 1572865 pd 0.1
+ES t 6.52110176091
+CL id 16 tid 16 eid 16 etid 16 c omnetpp::cMessage n DATA-0 pe 31 cid 38
+
+E # 32 t 6.448399407308 m 3 ce 30 msg 14
+- INFO:I am node1
+CM id 38 tid 38 eid 38 etid 38 c omnetpp::cMessage n DATA-0 pe -1
+BS id 38 tid 38 eid 38 etid 38 c omnetpp::cMessage n DATA-0 pe 32
+ES t 10.302572699645
+- INFO:Forwarding message (omnetpp::cMessage)DATA-2 on gate[1]
+BS id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n DATA-2 pe 32
+SH sm 3 sg 1572865 pd 0.1
+ES t 6.577343612088
+CL id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n DATA-2 pe 32 cid 39
+
+E # 33 t 6.52110176091 m 5 ce 31 msg 16
+- INFO:I am node3
+CM id 39 tid 39 eid 39 etid 39 c omnetpp::cMessage n DATA-0 pe -1
+BS id 39 tid 39 eid 39 etid 39 c omnetpp::cMessage n DATA-0 pe 33
+ES t 13.627925161379
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 16 tid 16 eid 16 etid 16 c omnetpp::cMessage n DATA-0 pe 33
+SH sm 5 sg 1572865 pd 0.1
+ES t 6.628480033828
+CL id 16 tid 16 eid 16 etid 16 c omnetpp::cMessage n DATA-0 pe 33 cid 40
+
+E # 34 t 6.577343612088 m 4 ce 32 msg 14
+- INFO:I am node2
+CM id 40 tid 40 eid 40 etid 40 c omnetpp::cMessage n DATA-0 pe -1
+BS id 40 tid 40 eid 40 etid 40 c omnetpp::cMessage n DATA-0 pe 34
+ES t 7.137074415251
+- INFO:Forwarding message (omnetpp::cMessage)DATA-2 on gate[1]
+BS id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n DATA-2 pe 34
+SH sm 4 sg 1572865 pd 0.1
+ES t 6.68269926929
+CL id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n DATA-2 pe 34 cid 41
+
+E # 35 t 6.628480033828 m 6 ce 33 msg 16
+- INFO:I am node4
+CM id 41 tid 41 eid 41 etid 41 c omnetpp::cMessage n DATA-0 pe -1
+BS id 41 tid 41 eid 41 etid 41 c omnetpp::cMessage n DATA-0 pe 35
+ES t 9.836953543984
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 16 tid 16 eid 16 etid 16 c omnetpp::cMessage n DATA-0 pe 35
+SH sm 6 sg 1572865 pd 0.1
+ES t 6.73155283735
+CL id 16 tid 16 eid 16 etid 16 c omnetpp::cMessage n DATA-0 pe 35 cid 42
+
+E # 36 t 6.68269926929 m 5 ce 34 msg 14
+- INFO:I am node3
+CM id 42 tid 42 eid 42 etid 42 c omnetpp::cMessage n DATA-0 pe -1
+BS id 42 tid 42 eid 42 etid 42 c omnetpp::cMessage n DATA-0 pe 36
+ES t 7.713715679442
+- INFO:Forwarding message (omnetpp::cMessage)DATA-2 on gate[1]
+BS id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n DATA-2 pe 36
+SH sm 5 sg 1572865 pd 0.1
+ES t 6.797581817548
+CL id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n DATA-2 pe 36 cid 43
+
+E # 37 t 6.73155283735 m 7 ce 35 msg 16
+- INFO:I am node5
+CM id 43 tid 43 eid 43 etid 43 c omnetpp::cMessage n DATA-0 pe -1
+BS id 43 tid 43 eid 43 etid 43 c omnetpp::cMessage n DATA-0 pe 37
+ES t 13.40800376047
+- INFO:Message (omnetpp::cMessage)DATA-0 arrived.
+DM id 16 tid 16 eid 16 etid 16 c omnetpp::cMessage n DATA-0 pe 37
+
+E # 38 t 6.797581817548 m 6 ce 36 msg 14
+- INFO:I am node4
+CM id 44 tid 44 eid 44 etid 44 c omnetpp::cMessage n DATA-0 pe -1
+BS id 44 tid 44 eid 44 etid 44 c omnetpp::cMessage n DATA-0 pe 38
+ES t 9.842993933463
+- INFO:Forwarding message (omnetpp::cMessage)DATA-2 on gate[1]
+BS id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n DATA-2 pe 38
+SH sm 6 sg 1572865 pd 0.1
+ES t 6.900022302455
+CL id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n DATA-2 pe 38 cid 45
+
+E # 39 t 6.889912414474 m 7 ce 29 msg 35
+- INFO:I am node5
+CM id 45 tid 45 eid 45 etid 45 c omnetpp::cMessage n DATA-0 pe -1
+BS id 45 tid 45 eid 45 etid 45 c omnetpp::cMessage n DATA-0 pe 39
+ES t 11.091585942535
+- INFO:Message (omnetpp::cMessage)DATA-0 arrived.
+DM id 35 tid 35 eid 35 etid 35 c omnetpp::cMessage n DATA-0 pe 39
+
+E # 40 t 6.900022302455 m 7 ce 38 msg 14
+- INFO:I am node5
+CM id 46 tid 46 eid 46 etid 46 c omnetpp::cMessage n DATA-0 pe -1
+BS id 46 tid 46 eid 46 etid 46 c omnetpp::cMessage n DATA-0 pe 40
+ES t 7.626412438916
+- INFO:Message (omnetpp::cMessage)DATA-2 arrived.
+DM id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n DATA-2 pe 40
+
+E # 41 t 7.137074415251 m 4 ce 34 msg 40
+- INFO:I am node2
+CM id 47 tid 47 eid 47 etid 47 c omnetpp::cMessage n DATA-0 pe -1
+BS id 47 tid 47 eid 47 etid 47 c omnetpp::cMessage n DATA-0 pe 41
+ES t 7.231917261256
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 40 tid 40 eid 40 etid 40 c omnetpp::cMessage n DATA-0 pe 41
+SH sm 4 sg 1572865 pd 0.1
+ES t 7.240992123358
+CL id 40 tid 40 eid 40 etid 40 c omnetpp::cMessage n DATA-0 pe 41 cid 48
+
+E # 42 t 7.231917261256 m 4 ce 41 msg 47
+- INFO:I am node2
+CM id 48 tid 48 eid 48 etid 48 c omnetpp::cMessage n DATA-0 pe -1
+BS id 48 tid 48 eid 48 etid 48 c omnetpp::cMessage n DATA-0 pe 42
+ES t 12.038821956585
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 47 tid 47 eid 47 etid 47 c omnetpp::cMessage n DATA-0 pe 42
+SH sm 4 sg 1572865 pd 0.1
+ES t 7.33353862615
+CL id 47 tid 47 eid 47 etid 47 c omnetpp::cMessage n DATA-0 pe 42 cid 49
+
+E # 43 t 7.240992123358 m 5 ce 41 msg 40
+- INFO:I am node3
+CM id 49 tid 49 eid 49 etid 49 c omnetpp::cMessage n DATA-0 pe -1
+BS id 49 tid 49 eid 49 etid 49 c omnetpp::cMessage n DATA-0 pe 43
+ES t 11.975975509233
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 40 tid 40 eid 40 etid 40 c omnetpp::cMessage n DATA-0 pe 43
+SH sm 5 sg 1572865 pd 0.1
+ES t 7.343506542679
+CL id 40 tid 40 eid 40 etid 40 c omnetpp::cMessage n DATA-0 pe 43 cid 50
+
+E # 44 t 7.33353862615 m 5 ce 42 msg 47
+- INFO:I am node3
+CM id 50 tid 50 eid 50 etid 50 c omnetpp::cMessage n DATA-0 pe -1
+BS id 50 tid 50 eid 50 etid 50 c omnetpp::cMessage n DATA-0 pe 44
+ES t 12.131278512991
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 47 tid 47 eid 47 etid 47 c omnetpp::cMessage n DATA-0 pe 44
+SH sm 5 sg 1572865 pd 0.1
+ES t 7.438424196643
+CL id 47 tid 47 eid 47 etid 47 c omnetpp::cMessage n DATA-0 pe 44 cid 51
+
+E # 45 t 7.343506542679 m 6 ce 43 msg 40
+- INFO:I am node4
+CM id 51 tid 51 eid 51 etid 51 c omnetpp::cMessage n DATA-0 pe -1
+BS id 51 tid 51 eid 51 etid 51 c omnetpp::cMessage n DATA-0 pe 45
+ES t 21.733081649067
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 40 tid 40 eid 40 etid 40 c omnetpp::cMessage n DATA-0 pe 45
+SH sm 6 sg 1572865 pd 0.1
+ES t 7.466795676421
+CL id 40 tid 40 eid 40 etid 40 c omnetpp::cMessage n DATA-0 pe 45 cid 52
+
+E # 46 t 7.438424196643 m 6 ce 44 msg 47
+- INFO:I am node4
+CM id 52 tid 52 eid 52 etid 52 c omnetpp::cMessage n DATA-0 pe -1
+BS id 52 tid 52 eid 52 etid 52 c omnetpp::cMessage n DATA-0 pe 46
+ES t 13.164118970143
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 47 tid 47 eid 47 etid 47 c omnetpp::cMessage n DATA-0 pe 46
+SH sm 6 sg 1572865 pd 0.1
+ES t 7.544401657411
+CL id 47 tid 47 eid 47 etid 47 c omnetpp::cMessage n DATA-0 pe 46 cid 53
+
+E # 47 t 7.466795676421 m 7 ce 45 msg 40
+- INFO:I am node5
+CM id 53 tid 53 eid 53 etid 53 c omnetpp::cMessage n DATA-0 pe -1
+BS id 53 tid 53 eid 53 etid 53 c omnetpp::cMessage n DATA-0 pe 47
+ES t 9.694388151677
+- INFO:Message (omnetpp::cMessage)DATA-0 arrived.
+DM id 40 tid 40 eid 40 etid 40 c omnetpp::cMessage n DATA-0 pe 47
+
+E # 48 t 7.544401657411 m 7 ce 46 msg 47
+- INFO:I am node5
+CM id 54 tid 54 eid 54 etid 54 c omnetpp::cMessage n DATA-0 pe -1
+BS id 54 tid 54 eid 54 etid 54 c omnetpp::cMessage n DATA-0 pe 48
+ES t 12.291874574895
+- INFO:Message (omnetpp::cMessage)DATA-0 arrived.
+DM id 47 tid 47 eid 47 etid 47 c omnetpp::cMessage n DATA-0 pe 48
+
+E # 49 t 7.588434768774 m 4 ce 14 msg 20
+- INFO:I am node2
+CM id 55 tid 55 eid 55 etid 55 c omnetpp::cMessage n DATA-0 pe -1
+BS id 55 tid 55 eid 55 etid 55 c omnetpp::cMessage n DATA-0 pe 49
+ES t 10.46109680248
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 20 tid 20 eid 20 etid 20 c omnetpp::cMessage n DATA-0 pe 49
+SH sm 4 sg 1572865 pd 0.1
+ES t 7.711698279391
+CL id 20 tid 20 eid 20 etid 20 c omnetpp::cMessage n DATA-0 pe 49 cid 56
+
+E # 50 t 7.626412438916 m 7 ce 40 msg 46
+- INFO:I am node5
+CM id 56 tid 56 eid 56 etid 56 c omnetpp::cMessage n DATA-0 pe -1
+BS id 56 tid 56 eid 56 etid 56 c omnetpp::cMessage n DATA-0 pe 50
+ES t 13.606951436201
+- INFO:Message (omnetpp::cMessage)DATA-0 arrived.
+DM id 46 tid 46 eid 46 etid 46 c omnetpp::cMessage n DATA-0 pe 50
+
+E # 51 t 7.711698279391 m 5 ce 49 msg 20
+- INFO:I am node3
+CM id 57 tid 57 eid 57 etid 57 c omnetpp::cMessage n DATA-0 pe -1
+BS id 57 tid 57 eid 57 etid 57 c omnetpp::cMessage n DATA-0 pe 51
+ES t 8.234504408267
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 20 tid 20 eid 20 etid 20 c omnetpp::cMessage n DATA-0 pe 51
+SH sm 5 sg 1572865 pd 0.1
+ES t 7.812319432296
+CL id 20 tid 20 eid 20 etid 20 c omnetpp::cMessage n DATA-0 pe 51 cid 58
+
+E # 52 t 7.713715679442 m 5 ce 36 msg 42
+- INFO:I am node3
+CM id 58 tid 58 eid 58 etid 58 c omnetpp::cMessage n DATA-0 pe -1
+BS id 58 tid 58 eid 58 etid 58 c omnetpp::cMessage n DATA-0 pe 52
+ES t 25.214784101715
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 42 tid 42 eid 42 etid 42 c omnetpp::cMessage n DATA-0 pe 52
+SH sm 5 sg 1572865 pd 0.1
+ES t 7.824704804118
+CL id 42 tid 42 eid 42 etid 42 c omnetpp::cMessage n DATA-0 pe 52 cid 59
+
+E # 53 t 7.812319432296 m 6 ce 51 msg 20
+- INFO:I am node4
+CM id 59 tid 59 eid 59 etid 59 c omnetpp::cMessage n DATA-0 pe -1
+BS id 59 tid 59 eid 59 etid 59 c omnetpp::cMessage n DATA-0 pe 53
+ES t 13.106490089734
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 20 tid 20 eid 20 etid 20 c omnetpp::cMessage n DATA-0 pe 53
+SH sm 6 sg 1572865 pd 0.1
+ES t 7.923425406753
+CL id 20 tid 20 eid 20 etid 20 c omnetpp::cMessage n DATA-0 pe 53 cid 60
+
+E # 54 t 7.824704804118 m 6 ce 52 msg 42
+- INFO:I am node4
+CM id 60 tid 60 eid 60 etid 60 c omnetpp::cMessage n DATA-0 pe -1
+BS id 60 tid 60 eid 60 etid 60 c omnetpp::cMessage n DATA-0 pe 54
+ES t 8.761835134207
+- INFO:Forwarding message (omnetpp::cMessage)DATA-0 on gate[1]
+BS id 42 tid 42 eid 42 etid 42 c omnetpp::cMessage n DATA-0 pe 54
+SH sm 6 sg 1572865 pd 0.1
+ES t 7.927066871179
+CL id 42 tid 42 eid 42 etid 42 c omnetpp::cMessage n DATA-0 pe 54 cid 61

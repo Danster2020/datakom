@@ -60,8 +60,6 @@ void Txc1::handleMessage(cMessage *msg)
 {
 	EV << "I am node" << getIndex() << "\n";
 
-	// if (msg == event)
-	//{
 	numReceived++;
 
 	// if source node (0)
@@ -75,8 +73,8 @@ void Txc1::handleMessage(cMessage *msg)
 		cMessage *newMsg = new cMessage(msgname);
 		scheduleAt(simTime() + exponential(5.0), newMsg);
 	}
-
-	else if (getIndex() == 5)
+	
+	if (getIndex() == 5)
 	{
 		// message arrived
 		EV << "Message " << msg << " arrived.\n";
@@ -91,7 +89,6 @@ void Txc1::handleMessage(cMessage *msg)
 		numSent++;
 		txVector.record(numSent);
 	}
-	//}
 }
 
 void Txc1::forwardMessage(cMessage *msg)
@@ -103,7 +100,8 @@ void Txc1::forwardMessage(cMessage *msg)
 	int k = n - 1;
 	EV << "Forwarding message " << msg << " on gate[" << k << "]\n";
 	// send(msg, "gate$o", k);
-	scheduleAt(simTime() + exponential(0.01), msg);
+	// scheduleAt(simTime() + exponential(0.01), msg);
+	sendDelayed(msg, exponential(0.01), "gate$o", k);
 }
 
 void Txc1::finish()
