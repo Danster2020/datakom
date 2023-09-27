@@ -11,6 +11,7 @@ private:
 	long msgCounter;
 	long numSent;
 	long numReceived;
+	double timeReceived;
 	cOutVector txVector;
 	cOutVector rxVector;
 
@@ -57,25 +58,29 @@ void Txc1::initialize()
 
 void Txc1::handleMessage(cMessage *msg)
 {
+	EV << "I am node" << getIndex() << "\n";
+
+	// if (msg == event)
+	//{
 	numReceived++;
 
 	// if source node (0)
-	if (getIndex() == 0)
+	if ((getIndex() == 0) && (msg == event))
 	{
 		msgCounter++;
 		// EV << "getIndex(): " << getIndex();
 		EV << "Scheduling send to a simtime + time\n";
 		char msgname[20];
 		sprintf(msgname, "DATA-%d", msgCounter);
-		cMessage *msg = new cMessage(msgname);
-		scheduleAt(simTime() + exponential(5.0), msg);
+		cMessage *newMsg = new cMessage(msgname);
+		scheduleAt(simTime() + exponential(5.0), newMsg);
 	}
 
-	if (getIndex() == 5)
+	else if (getIndex() == 5)
 	{
 		// message arrived
 		EV << "Message " << msg << " arrived.\n";
-		//numReceived++;
+		// numReceived++;
 		rxVector.record(numReceived);
 		delete msg;
 	}
@@ -86,6 +91,7 @@ void Txc1::handleMessage(cMessage *msg)
 		numSent++;
 		txVector.record(numSent);
 	}
+	//}
 }
 
 void Txc1::forwardMessage(cMessage *msg)
@@ -96,7 +102,8 @@ void Txc1::forwardMessage(cMessage *msg)
 	int n = gateSize("gate");
 	int k = n - 1;
 	EV << "Forwarding message " << msg << " on gate[" << k << "]\n";
-	send(msg, "gate$o", k);
+	// send(msg, "gate$o", k);
+	scheduleAt(simTime() + exponential(0.01), msg);
 }
 
 void Txc1::finish()
@@ -105,6 +112,6 @@ void Txc1::finish()
 	EV << "Node" << getIndex() << " Received: " << numReceived << endl;
 	EV << "\n";
 
-	//recordScalar("#Sent", numSent);
-	//recordScalar("#received", numReceived);
+	// recordScalar("#Sent", numSent);
+	// recordScalar("#received", numReceived);
 }
