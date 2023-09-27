@@ -60,7 +60,6 @@ void Txc1::handleMessage(cMessage *msg)
 {
 	EV << "I am node" << getIndex() << "\n";
 	EV << "I have msg: " << msg << "\n";
-	// numReceived++;
 
 	// if event
 	if (msg == event)
@@ -81,11 +80,8 @@ void Txc1::handleMessage(cMessage *msg)
 			sprintf(msgname, "DATA-%d", msgCounter);
 			cMessage *newMsg = new cMessage(msgname);
 
-			// message has to be forwarded
-			// forwardMessage(newMsg);
 			EV << "scheduling new msg: " << msg << "\n";
 			scheduleAt(simTime() + exponential(5.0), newMsg);
-			// txVector.record(numSent);
 		}
 	}
 	else
@@ -105,7 +101,6 @@ void Txc1::handleMessage(cMessage *msg)
 		else
 		{
 			forwardMessage(msg);
-			// txVector.record(numSent);
 		}
 	}
 }
@@ -114,8 +109,9 @@ void Txc1::forwardMessage(cMessage *msg)
 {
 	multihopMsg = msg;
 	EV << "forwarding msg: " << msg << "\n";
-	scheduleAt(simTime() + exponential(0.01), event);
-	//numSent++;
+
+	// processing delay
+	scheduleAt(simTime() + exponential(0.03), event);
 	txVector.record(numSent);
 }
 
