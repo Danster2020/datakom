@@ -65,7 +65,7 @@ void Txc1::handleMessage(cMessage *msg)
 	numReceived++;
 
 	// if source node (0)
-	if ((getIndex() == 0) && (msg == event))
+	if (getIndex() == 0 && msg == event)
 	{
 		msgCounter++;
 		// EV << "getIndex(): " << getIndex();
