@@ -12,6 +12,7 @@ private:
 	long numSent;
 	long numReceived;
 	double timeReceived;
+	double lossProbability;
 	cOutVector txVector;
 	cOutVector rxVector;
 
@@ -43,6 +44,7 @@ void Txc1::initialize()
 	event = new cMessage("event");
 	txVector.setName("txVector");
 	rxVector.setName("rxVector");
+	lossProbability = par("lossProbability");
 
 	// start messaging if first node
 	if (getIndex() == 0)
@@ -68,7 +70,7 @@ void Txc1::handleMessage(cMessage *msg)
 		int n = gateSize("gate");
 		int k = n - 1;
 		send(multihopMsg, "gate$o", k);
-		
+
 		txVector.record(numSent);
 		numSent++;
 		multihopMsg = nullptr;
@@ -87,21 +89,28 @@ void Txc1::handleMessage(cMessage *msg)
 	}
 	else
 	{
-
-		// Shall I receive it (if uniform(0,1)>lossProbability)
-		//  If I shall recive, am I the last node
-		if (getIndex() == 5)
+		// Shall I receive it
+		if (uniform(0, 1) < lossProbability)
 		{
-			// message arrived
-			EV << "Message " << msg << " arrived.\n";
-			rxVector.record(numReceived);
-			numReceived++;
+			EV << "Message is lost";
 			delete msg;
 		}
-		//  Else, forward msg
 		else
 		{
-			forwardMessage(msg);
+			//  If I shall recive, am I the last node
+			if (getIndex() == 5)
+			{
+				// message arrived
+				EV << "Message " << msg << " arrived.\n";
+				rxVector.record(numReceived);
+				numReceived++;
+				delete msg;
+			}
+			//  Else, forward msg
+			else
+			{
+				forwardMessage(msg);
+			}
 		}
 	}
 }

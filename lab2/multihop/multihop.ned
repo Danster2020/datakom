@@ -3,6 +3,7 @@ simple Txc1
 	parameters:
 		volatile double delayTime @unit(s);
                 volatile double processingTime @unit(s);
+                double lossProbability;
 	gates:
 		inout gate[];
 }
