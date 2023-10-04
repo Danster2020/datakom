@@ -81,10 +81,10 @@ void Txc1::handleMessage(cMessage *msg)
 			msgCounter++;
 			char msgname[20];
 			sprintf(msgname, "DATA-%d", msgCounter);
-			cMessage *newMsg = new cMessage(msgname);
-
-			EV << "scheduling new msg: " << newMsg << "\n";
-			scheduleAt(simTime() + par("transmissionTime"), newMsg);
+			//cMessage *newMsg = new cMessage(msgname);
+			multihopMsg = new cMessage(msgname);
+			EV << "scheduling new msg: " << msgname << "\n";
+			scheduleAt(simTime() + par("transmissionTime"), event);
 		}
 	}
 	else
@@ -92,12 +92,12 @@ void Txc1::handleMessage(cMessage *msg)
 		// Shall I receive it
 		if (uniform(0, 1) < lossProbability)
 		{
-			EV << "Message is lost";
+			EV << "Message " << msg << " is lost";
 			delete msg;
 		}
 		else
 		{
-			//  If I shall recive, am I the last node
+			//  If I shall receive, am I the last node
 			if (getIndex() == 5)
 			{
 				// message arrived
@@ -106,7 +106,6 @@ void Txc1::handleMessage(cMessage *msg)
 				numReceived++;
 				delete msg;
 			}
-			//  Else, forward msg
 			else
 			{
 				forwardMessage(msg);
