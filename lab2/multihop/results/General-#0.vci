@@ -1,22 +1,24 @@
-file 6802 1696423838                                            
+file 31243 1696436990                                           
 version 2
-run General-0-20231004-12:50:38-2620
+run General-0-20231004-16:29:50-5849
 attr configname General
-attr datetime 20231004-12:50:38
+attr datetime 20231004-16:29:50
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Multihop
-attr processid 2620
+attr processid 5849
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
-param Multihop.node[*].delayTime exponential(0.1s)
-param Multihop.node[*].processingTime exponential(0.05s)
+param Multihop.node[*].transmissionTime 1s
+param Multihop.node[*].delayTime "uniform(0.01s, 0.2s)"
+param Multihop.node[*].processingTime exponential(0.01s)
+param Multihop.node[*].lossProbability 0.01
 
 vector 0 Multihop.node[0] txVector ETV
 vector 1 Multihop.node[1] txVector ETV
@@ -24,10 +26,10 @@ vector 2 Multihop.node[2] txVector ETV
 vector 3 Multihop.node[3] txVector ETV
 vector 4 Multihop.node[4] txVector ETV
 vector 5 Multihop.node[5] rxVector ETV
-0	695 1016 1 441 0.079587450457 195.219194673749 41 0 40 820 22140
-1	1711 1016 3 443 0.152383988359 195.263984646794 41 0 40 820 22140
-2	2727 1018 5 445 0.255364198963 195.312078035359 41 0 40 820 22140
-3	3745 1017 7 447 0.311525355537 195.478351453242 41 0 40 820 22140
-4	4762 1019 9 449 0.419102622331 195.501454315326 41 0 40 820 22140
-5	5781 1020 10 450 0.429102622331 195.511454315326 41 0 40 820 22140
+0	787 5203 1 2132 0.114274565438 199.102200214291 198 0 197 19503 2567895
+1	5990 5181 3 2134 0.136833873018 199.135720773142 197 0 196 19306 2529086
+2	11171 5150 5 2136 0.156066104333 199.156254129277 196 0 195 19110 2490670
+3	16321 5036 7 2138 0.173938115733 199.176495877067 192 0 191 18336 2340896
+4	21357 4956 9 2140 0.1894486006 199.186802615824 189 0 188 17766 2232594
+5	26313 4929 10 2130 0.1994486006 198.164322882827 188 0 187 17578 2197250
 

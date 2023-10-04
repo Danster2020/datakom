@@ -1,6 +1,7 @@
 simple Txc1
 {
 	parameters:
+                volatile double transmissionTime @unit(s);
 		volatile double delayTime @unit(s);
                 volatile double processingTime @unit(s);
                 double lossProbability;

@@ -84,7 +84,7 @@ void Txc1::handleMessage(cMessage *msg)
 			cMessage *newMsg = new cMessage(msgname);
 
 			EV << "scheduling new msg: " << newMsg << "\n";
-			scheduleAt(simTime() + exponential(5.0), newMsg);
+			scheduleAt(simTime() + par("transmissionTime"), newMsg);
 		}
 	}
 	else
@@ -130,6 +130,6 @@ void Txc1::finish()
 	EV << "Node" << getIndex() << " Received: " << numReceived << endl;
 	EV << "\n";
 
-	// recordScalar("#Sent", numSent);
-	// recordScalar("#received", numReceived);
+	recordScalar("#Sent", numSent);
+	recordScalar("#received", numReceived);
 }
