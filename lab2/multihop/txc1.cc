@@ -68,6 +68,8 @@ void Txc1::handleMessage(cMessage *msg)
 		int n = gateSize("gate");
 		int k = n - 1;
 		send(multihopMsg, "gate$o", k);
+		
+		txVector.record(numSent);
 		numSent++;
 		multihopMsg = nullptr;
 
@@ -75,12 +77,11 @@ void Txc1::handleMessage(cMessage *msg)
 		if (getIndex() == 0)
 		{
 			msgCounter++;
-
 			char msgname[20];
 			sprintf(msgname, "DATA-%d", msgCounter);
 			cMessage *newMsg = new cMessage(msgname);
 
-			EV << "scheduling new msg: " << msg << "\n";
+			EV << "scheduling new msg: " << newMsg << "\n";
 			scheduleAt(simTime() + exponential(5.0), newMsg);
 		}
 	}
@@ -93,8 +94,8 @@ void Txc1::handleMessage(cMessage *msg)
 		{
 			// message arrived
 			EV << "Message " << msg << " arrived.\n";
-			numReceived++;
 			rxVector.record(numReceived);
+			numReceived++;
 			delete msg;
 		}
 		//  Else, forward msg
@@ -111,8 +112,7 @@ void Txc1::forwardMessage(cMessage *msg)
 	EV << "forwarding msg: " << msg << "\n";
 
 	// processing delay
-	scheduleAt(simTime() + exponential(0.03), event);
-	txVector.record(numSent);
+	scheduleAt(simTime() + par("processingTime"), event);
 }
 
 void Txc1::finish()
