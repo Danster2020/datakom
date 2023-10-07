@@ -1,4 +1,4 @@
-simple Txc1
+simple Txc2
 {
 	parameters:
                 volatile double transmissionTime @unit(s);
@@ -24,7 +24,7 @@ network Multihop
 network Reliability
 {
         submodules:
-                node[6]: Txc1;
+                node[6]: Txc2;
         connections:
                 node[0].gate++ <--> { delay = 10ms; } <--> node[1].gate++;
                 node[1].gate++ <--> { delay = 10ms; } <--> node[2].gate++;

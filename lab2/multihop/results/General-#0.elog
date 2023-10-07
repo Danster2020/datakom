@@ -1,19 +1,19 @@
 E # 0 t 0 m 1 ce -1 msg -1
-SB v 1286 rid General-0-20231004-20:48:58-12854 b 1000
+SB v 1286 rid General-0-20231007-21:33:41-6068 b 1000
 KF p -1 c "" s ""
 MC id 1 c omnetpp::cModule t Reliability n Reliability cm 1
 MS id 1 d ""
-MC id 2 c Txc1 t Txc1 pid 1 n node[0]
+MC id 2 c Txc2 t Txc2 pid 1 n node[0]
 MS id 2 d ""
-MC id 3 c Txc1 t Txc1 pid 1 n node[1]
+MC id 3 c Txc2 t Txc2 pid 1 n node[1]
 MS id 3 d ""
-MC id 4 c Txc1 t Txc1 pid 1 n node[2]
+MC id 4 c Txc2 t Txc2 pid 1 n node[2]
 MS id 4 d ""
-MC id 5 c Txc1 t Txc1 pid 1 n node[3]
+MC id 5 c Txc2 t Txc2 pid 1 n node[3]
 MS id 5 d ""
-MC id 6 c Txc1 t Txc1 pid 1 n node[4]
+MC id 6 c Txc2 t Txc2 pid 1 n node[4]
 MS id 6 d ""
-MC id 7 c Txc1 t Txc1 pid 1 n node[5]
+MC id 7 c Txc2 t Txc2 pid 1 n node[5]
 MS id 7 d ""
 GC m 2 g 1048576 n gate$i i 0 o 0
 GC m 2 g 1572864 n gate$o i 0 o 1
@@ -65,7 +65,7 @@ CC sm 7 sg 1572864 dm 6 dg 1048578
 CS sm 7 sg 1572864 d ""
 MB sm 1 tm 2 m initialize(0)
 CM id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe -1
-- INFO (Txc1)Reliability.node[0]:Scheduling first send to a random time
+- INFO (Txc2)Reliability.node[0]:Scheduling first send to a random time
 CM id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n DATA-1 pe -1
 BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 0
 ES t 0.114274565438
@@ -94,6 +94,6 @@ SH sm 2 sg 1572864 pd 0.01
 ES t 0.124274565438
 CL id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n DATA-1 pe 1 cid 7
 CM id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n DATA-2 pe -1
-- INFO:scheduling new msg: DATA-2
+- INFO:Timeout is over, sending msg.scheduling new msg: DATA-2
 BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 1
 ES t 1.707119181827
