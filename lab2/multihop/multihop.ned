@@ -65,3 +65,32 @@ network Network2
                 node[3].gate++ <--> { delay = 10ms; } <--> node[4].gate++;
                 node[4].gate++ <--> { delay = 10ms; } <--> node[5].gate++;
 }
+
+network Network3
+{
+        submodules:
+                node[8]: Txc2;
+        connections:
+                node[0].gate++ <--> { delay = 10ms; } <--> node[1].gate++;
+                node[0].gate++ <--> { delay = 10ms; } <--> node[2].gate++;
+                
+                node[1].gate++ <--> { delay = 10ms; } <--> node[4].gate++;
+                node[1].gate++ <--> { delay = 10ms; } <--> node[3].gate++;
+
+                node[2].gate++ <--> { delay = 10ms; } <--> node[4].gate++;
+
+                node[3].gate++ <--> { delay = 10ms; } <--> node[6].gate++;
+                node[3].gate++ <--> { delay = 10ms; } <--> node[7].gate++;
+
+                node[4].gate++ <--> { delay = 10ms; } <--> node[7].gate++;
+
+                node[6].gate++ <--> { delay = 10ms; } <--> node[5].gate++;
+
+                node[7].gate++ <--> { delay = 10ms; } <--> node[5].gate++;
+
+
+
+
+
+ 
+}

@@ -69,8 +69,8 @@ void Txc2::handleMessage(cMessage *msg)
 	// if event
 	if (msg == event)
 	{
-		//cancelEvent(event);
-		// Send buffered message
+		// cancelEvent(event);
+		//  Send buffered message
 		int n = gateSize("gate");
 		EV << "n: " << n << "\n";
 
@@ -78,13 +78,20 @@ void Txc2::handleMessage(cMessage *msg)
 		if (getIndex() == 0)
 		{
 			int k = n - 1;
-			EV << "Timeout is over, sending msg: " << multihopMsg << " on k: " << k << "\n";
-			send(multihopMsg, "gate$o", k);
+			//EV << "Timeout is over, sending msg: " << multihopMsg << " on k: " << k << "\n";
+			//send(multihopMsg, "gate$o", k);
+			for (int i = 0; i < n; i++)
+			{
+				EV << "Sending on k: " << i << "\n";
+				send(multihopMsg->dup(), "gate$o", i);
+				txVector.record(numSent);
+				numSent++;
+			}
 			duplicatePacketList.push_back(multihopMsg->getTreeId());
-			txVector.record(numSent);
-			numSent++;
+			//txVector.record(numSent);
+			//numSent++;
 			multihopMsg = nullptr;
-			msgCounter++;
+			//msgCounter++;
 
 			// schedule new message
 			char msgname[20];
@@ -163,7 +170,7 @@ void Txc2::forwardMessage(cMessage *msg)
 	EV << "forwarding msg: " << msg << "\n";
 
 	// processing delay
-	//cancelEvent(event);
+	// cancelEvent(event);
 	scheduleAt(simTime() + par("processingTime"), event);
 }
 
