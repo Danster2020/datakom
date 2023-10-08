@@ -107,7 +107,7 @@ void Txc2::handleMessage(cMessage *msg)
 			for (int i = 0; i < n; i++)
 			{
 				EV << "Sending on k: " << i << "\n";
-				send(multihopMsg, "gate$o", i);
+				send(multihopMsg->dup(), "gate$o", i);
 				txVector.record(numSent);
 				numSent++;
 			}
