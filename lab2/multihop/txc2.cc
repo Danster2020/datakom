@@ -106,12 +106,12 @@ void Txc2::handleMessage(cMessage *msg)
 
 			for (int i = 0; i < n; i++)
 			{
-				EV << "Sending on k: " << k << "\n";
+				EV << "Sending on k: " << i << "\n";
 				send(multihopMsg, "gate$o", i);
 				txVector.record(numSent);
 				numSent++;
-				multihopMsg = nullptr;
 			}
+			multihopMsg = nullptr;
 		}
 	}
 	else
@@ -136,7 +136,7 @@ void Txc2::handleMessage(cMessage *msg)
 			else
 			{
 
-				if (std::find(duplicatePacketList.begin(), duplicatePacketList.end(), msg->getTreeiD()) != duplicatePacketList.end())
+				if (std::find(duplicatePacketList.begin(), duplicatePacketList.end(), msg->getTreeId()) != duplicatePacketList.end())
 				{
 					EV << "This is a duplicate packet. Deleting."
 					   << "\n";

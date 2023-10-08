@@ -1,0 +1,27 @@
+file 711 1696732126                                             
+version 2
+run General-0-20231008-02:21:30-10279
+attr configname General
+attr datetime 20231008-02:21:30
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Reliability
+attr processid 10279
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param Reliability.node[*].transmissionTime "uniform(1s, 2s)"
+param Reliability.node[*].delayTime "uniform(0.01s, 0.2s)"
+param Reliability.node[*].processingTime exponential(0.01s)
+param Reliability.node[*].lossProbability 0.0
+
+vector 0 Reliability.node[0] txVector ETV
+0	626 21 1 1 0.114274565438 0.114274565438 1 0 0 0 0
+vector 1 Reliability.node[1] txVector ETV
+1	689 21 3 3 0.142870607559 0.142870607559 1 0 0 0 0
+
