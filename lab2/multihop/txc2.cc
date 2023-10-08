@@ -66,31 +66,43 @@ void Txc2::handleMessage(cMessage *msg)
 	// if event
 	if (msg == event)
 	{
-		EV << "Timeout is over, sending msg.";
 		// Send buffered message
 		int n = gateSize("gate");
-		int k = n - 1;
+		EV << "n: " << n << "\n";
 
 		// Create new message if Node 0
 		if (getIndex() == 0)
 		{
+			int k = n - 1;
+			EV << "Timeout is over, sending msg on k: " << k << "\n";
 			send(multihopMsg, "gate$o", k);
 			txVector.record(numSent);
 			numSent++;
 			multihopMsg = nullptr;
-
 			msgCounter++;
+
+			// schedule new message
 			char msgname[20];
 			sprintf(msgname, "DATA-%d", msgCounter);
-			// cMessage *newMsg = new cMessage(msgname);
 			multihopMsg = new cMessage(msgname);
 			EV << "scheduling new msg: " << msgname << "\n";
 			scheduleAt(simTime() + par("transmissionTime"), event);
 		}
 		else
 		{
-			EV << "event on non source node" << "\n";
-			k = intuniform(1, n-1);
+			EV << "Event on non source node."
+			   << "\n";
+			
+			int kMin = 1;
+
+			// prevents backflow in node4
+			if (getIndex() == 4)
+			{
+				kMin = 2;
+			}
+			
+			int k = intuniform(kMin, n - 1);
+			EV << "Sending on k: " << k << "\n";
 			send(multihopMsg, "gate$o", k);
 			txVector.record(numSent);
 			numSent++;
