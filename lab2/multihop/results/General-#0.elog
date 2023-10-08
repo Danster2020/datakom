@@ -1,0 +1,346 @@
+E # 0 t 0 m 1 ce -1 msg -1
+SB v 1286 rid General-0-20231008-11:25:56-20750 b 1000
+KF p -1 c "" s ""
+MC id 1 c omnetpp::cModule t Network1 n Network1 cm 1
+MS id 1 d ""
+MC id 2 c Txc2 t Txc2 pid 1 n node[0]
+MS id 2 d ""
+MC id 3 c Txc2 t Txc2 pid 1 n node[1]
+MS id 3 d ""
+MC id 4 c Txc2 t Txc2 pid 1 n node[2]
+MS id 4 d ""
+MC id 5 c Txc2 t Txc2 pid 1 n node[3]
+MS id 5 d ""
+MC id 6 c Txc2 t Txc2 pid 1 n node[4]
+MS id 6 d ""
+MC id 7 c Txc2 t Txc2 pid 1 n node[5]
+MS id 7 d ""
+GC m 2 g 1048576 n gate$i i 0 o 0
+GC m 2 g 1572864 n gate$o i 0 o 1
+GC m 3 g 1048576 n gate$i i 0 o 0
+GC m 3 g 1572864 n gate$o i 0 o 1
+CC sm 2 sg 1572864 dm 3 dg 1048576
+CS sm 2 sg 1572864 d ""
+CC sm 3 sg 1572864 dm 2 dg 1048576
+CS sm 3 sg 1572864 d ""
+GC m 3 g 1048577 n gate$i i 1 o 0
+GC m 3 g 1572865 n gate$o i 1 o 1
+GC m 4 g 1048576 n gate$i i 0 o 0
+GC m 4 g 1572864 n gate$o i 0 o 1
+CC sm 3 sg 1572865 dm 4 dg 1048576
+CS sm 3 sg 1572865 d ""
+CC sm 4 sg 1572864 dm 3 dg 1048577
+CS sm 4 sg 1572864 d ""
+GC m 3 g 1048578 n gate$i i 2 o 0
+GC m 3 g 1572866 n gate$o i 2 o 1
+GC m 5 g 1048576 n gate$i i 0 o 0
+GC m 5 g 1572864 n gate$o i 0 o 1
+CC sm 3 sg 1572866 dm 5 dg 1048576
+CS sm 3 sg 1572866 d ""
+CC sm 5 sg 1572864 dm 3 dg 1048578
+CS sm 5 sg 1572864 d ""
+GC m 4 g 1048577 n gate$i i 1 o 0
+GC m 4 g 1572865 n gate$o i 1 o 1
+GC m 6 g 1048576 n gate$i i 0 o 0
+GC m 6 g 1572864 n gate$o i 0 o 1
+CC sm 4 sg 1572865 dm 6 dg 1048576
+CS sm 4 sg 1572865 d ""
+CC sm 6 sg 1572864 dm 4 dg 1048577
+CS sm 6 sg 1572864 d ""
+GC m 4 g 1048578 n gate$i i 2 o 0
+GC m 4 g 1572866 n gate$o i 2 o 1
+GC m 5 g 1048577 n gate$i i 1 o 0
+GC m 5 g 1572865 n gate$o i 1 o 1
+CC sm 4 sg 1572866 dm 5 dg 1048577
+CS sm 4 sg 1572866 d ""
+CC sm 5 sg 1572865 dm 4 dg 1048578
+CS sm 5 sg 1572865 d ""
+GC m 5 g 1048578 n gate$i i 2 o 0
+GC m 5 g 1572866 n gate$o i 2 o 1
+GC m 6 g 1048577 n gate$i i 1 o 0
+GC m 6 g 1572865 n gate$o i 1 o 1
+CC sm 5 sg 1572866 dm 6 dg 1048577
+CS sm 5 sg 1572866 d ""
+CC sm 6 sg 1572865 dm 5 dg 1048578
+CS sm 6 sg 1572865 d ""
+GC m 6 g 1048578 n gate$i i 2 o 0
+GC m 6 g 1572866 n gate$o i 2 o 1
+GC m 7 g 1048576 n gate$i i 0 o 0
+GC m 7 g 1572864 n gate$o i 0 o 1
+CC sm 6 sg 1572866 dm 7 dg 1048576
+CS sm 6 sg 1572866 d ""
+CC sm 7 sg 1572864 dm 6 dg 1048578
+CS sm 7 sg 1572864 d ""
+MB sm 1 tm 2 m initialize(0)
+CM id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe -1
+CM id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n DATA-1 pe -1
+- INFO (Txc2)Network1.node[0]:Scheduling first msg: DATA-1 to a random time
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 0
+ES t 0.114274565438
+ME
+MB sm 1 tm 3 m initialize(0)
+CM id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n event pe -1
+ME
+MB sm 1 tm 4 m initialize(0)
+CM id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n event pe -1
+ME
+MB sm 1 tm 5 m initialize(0)
+CM id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n event pe -1
+ME
+MB sm 1 tm 6 m initialize(0)
+CM id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n event pe -1
+ME
+MB sm 1 tm 7 m initialize(0)
+CM id 6 tid 6 eid 6 etid 6 c omnetpp::cMessage n event pe -1
+ME
+
+E # 1 t 0.114274565438 m 2 ce 0 msg 0
+- INFO:I am node0
+- INFO:I have msg: (omnetpp::cMessage)event
+- INFO:n: 1
+- INFO:Timeout is over, sending msg: (omnetpp::cMessage)DATA-1 on k: 0
+CL id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n DATA-1 pe 0 cid 7
+BS id 7 tid 1 eid 7 etid 1 c omnetpp::cMessage n DATA-1 pe 1
+SH sm 2 sg 1572864 pd 0.01
+ES t 0.124274565438
+CL id 7 tid 1 eid 7 etid 1 c omnetpp::cMessage n DATA-1 pe 1 cid 8
+CM id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n DATA-2 pe -1
+- INFO:scheduling new msg: DATA-2
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 1
+ES t 1.707119181827
+
+E # 2 t 0.124274565438 m 3 ce 1 msg 7
+- INFO:I am node1
+- INFO:I have msg: (omnetpp::cMessage)DATA-1
+- INFO:This is the first time we receive this message.
+- INFO:forwarding msg: (omnetpp::cMessage)DATA-1
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n event pe 0
+ES t 0.142870607559
+
+E # 3 t 0.142870607559 m 3 ce 2 msg 2
+- INFO:I am node1
+- INFO:I have msg: (omnetpp::cMessage)event
+- INFO:n: 3
+- INFO:Event on non source node.
+- INFO:Sending on k: 0
+CL id 7 tid 1 eid 7 etid 1 c omnetpp::cMessage n DATA-1 pe 2 cid 9
+BS id 9 tid 1 eid 9 etid 1 c omnetpp::cMessage n DATA-1 pe 3
+SH sm 3 sg 1572864 pd 0.01
+ES t 0.152870607559
+CL id 9 tid 1 eid 9 etid 1 c omnetpp::cMessage n DATA-1 pe 3 cid 10
+- INFO:Sending on k: 1
+CL id 7 tid 1 eid 7 etid 1 c omnetpp::cMessage n DATA-1 pe 3 cid 10
+BS id 10 tid 1 eid 10 etid 1 c omnetpp::cMessage n DATA-1 pe 3
+SH sm 3 sg 1572865 pd 0.01
+ES t 0.152870607559
+CL id 10 tid 1 eid 10 etid 1 c omnetpp::cMessage n DATA-1 pe 3 cid 11
+- INFO:Sending on k: 2
+CL id 7 tid 1 eid 7 etid 1 c omnetpp::cMessage n DATA-1 pe 3 cid 11
+BS id 11 tid 1 eid 11 etid 1 c omnetpp::cMessage n DATA-1 pe 3
+SH sm 3 sg 1572866 pd 0.01
+ES t 0.152870607559
+CL id 11 tid 1 eid 11 etid 1 c omnetpp::cMessage n DATA-1 pe 3 cid 12
+
+E # 4 t 0.152870607559 m 2 ce 3 msg 9
+- INFO:I am node0
+- INFO:I have msg: (omnetpp::cMessage)DATA-1
+- INFO:This is a duplicate packet. Deleting.
+DM id 9 tid 1 eid 9 etid 1 c omnetpp::cMessage n DATA-1 pe 4
+
+E # 5 t 0.152870607559 m 4 ce 3 msg 10
+- INFO:I am node2
+- INFO:I have msg: (omnetpp::cMessage)DATA-1
+- INFO:This is the first time we receive this message.
+- INFO:forwarding msg: (omnetpp::cMessage)DATA-1
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n event pe 0
+ES t 0.160742618959
+
+E # 6 t 0.152870607559 m 5 ce 3 msg 11
+- INFO:I am node3
+- INFO:I have msg: (omnetpp::cMessage)DATA-1
+- INFO:This is the first time we receive this message.
+- INFO:forwarding msg: (omnetpp::cMessage)DATA-1
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n event pe 0
+ES t 0.158381092426
+
+E # 7 t 0.158381092426 m 5 ce 6 msg 4
+- INFO:I am node3
+- INFO:I have msg: (omnetpp::cMessage)event
+- INFO:n: 3
+- INFO:Event on non source node.
+- INFO:Sending on k: 0
+CL id 11 tid 1 eid 11 etid 1 c omnetpp::cMessage n DATA-1 pe 6 cid 12
+BS id 12 tid 1 eid 12 etid 1 c omnetpp::cMessage n DATA-1 pe 7
+SH sm 5 sg 1572864 pd 0.01
+ES t 0.168381092426
+CL id 12 tid 1 eid 12 etid 1 c omnetpp::cMessage n DATA-1 pe 7 cid 13
+- INFO:Sending on k: 1
+CL id 11 tid 1 eid 11 etid 1 c omnetpp::cMessage n DATA-1 pe 7 cid 13
+BS id 13 tid 1 eid 13 etid 1 c omnetpp::cMessage n DATA-1 pe 7
+SH sm 5 sg 1572865 pd 0.01
+ES t 0.168381092426
+CL id 13 tid 1 eid 13 etid 1 c omnetpp::cMessage n DATA-1 pe 7 cid 14
+- INFO:Sending on k: 2
+CL id 11 tid 1 eid 11 etid 1 c omnetpp::cMessage n DATA-1 pe 7 cid 14
+BS id 14 tid 1 eid 14 etid 1 c omnetpp::cMessage n DATA-1 pe 7
+SH sm 5 sg 1572866 pd 0.01
+ES t 0.168381092426
+CL id 14 tid 1 eid 14 etid 1 c omnetpp::cMessage n DATA-1 pe 7 cid 15
+
+E # 8 t 0.160742618959 m 4 ce 5 msg 3
+- INFO:I am node2
+- INFO:I have msg: (omnetpp::cMessage)event
+- INFO:n: 3
+- INFO:Event on non source node.
+- INFO:Sending on k: 0
+CL id 10 tid 1 eid 10 etid 1 c omnetpp::cMessage n DATA-1 pe 5 cid 15
+BS id 15 tid 1 eid 15 etid 1 c omnetpp::cMessage n DATA-1 pe 8
+SH sm 4 sg 1572864 pd 0.01
+ES t 0.170742618959
+CL id 15 tid 1 eid 15 etid 1 c omnetpp::cMessage n DATA-1 pe 8 cid 16
+- INFO:Sending on k: 1
+CL id 10 tid 1 eid 10 etid 1 c omnetpp::cMessage n DATA-1 pe 8 cid 16
+BS id 16 tid 1 eid 16 etid 1 c omnetpp::cMessage n DATA-1 pe 8
+SH sm 4 sg 1572865 pd 0.01
+ES t 0.170742618959
+CL id 16 tid 1 eid 16 etid 1 c omnetpp::cMessage n DATA-1 pe 8 cid 17
+- INFO:Sending on k: 2
+CL id 10 tid 1 eid 10 etid 1 c omnetpp::cMessage n DATA-1 pe 8 cid 17
+BS id 17 tid 1 eid 17 etid 1 c omnetpp::cMessage n DATA-1 pe 8
+SH sm 4 sg 1572866 pd 0.01
+ES t 0.170742618959
+CL id 17 tid 1 eid 17 etid 1 c omnetpp::cMessage n DATA-1 pe 8 cid 18
+
+E # 9 t 0.168381092426 m 3 ce 7 msg 12
+- INFO:I am node1
+- INFO:I have msg: (omnetpp::cMessage)DATA-1
+- INFO:This is a duplicate packet. Deleting.
+DM id 12 tid 1 eid 12 etid 1 c omnetpp::cMessage n DATA-1 pe 9
+
+E # 10 t 0.168381092426 m 4 ce 7 msg 13
+- INFO:I am node2
+- INFO:I have msg: (omnetpp::cMessage)DATA-1
+- INFO:This is a duplicate packet. Deleting.
+DM id 13 tid 1 eid 13 etid 1 c omnetpp::cMessage n DATA-1 pe 10
+
+E # 11 t 0.168381092426 m 6 ce 7 msg 14
+- INFO:I am node4
+- INFO:I have msg: (omnetpp::cMessage)DATA-1
+- INFO:This is the first time we receive this message.
+- INFO:forwarding msg: (omnetpp::cMessage)DATA-1
+BS id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n event pe 0
+ES t 0.174136284395
+
+E # 12 t 0.170742618959 m 3 ce 8 msg 15
+- INFO:I am node1
+- INFO:I have msg: (omnetpp::cMessage)DATA-1
+- INFO:This is a duplicate packet. Deleting.
+DM id 15 tid 1 eid 15 etid 1 c omnetpp::cMessage n DATA-1 pe 12
+
+E # 13 t 0.170742618959 m 6 ce 8 msg 16
+- INFO:I am node4
+- INFO:I have msg: (omnetpp::cMessage)DATA-1
+- INFO:This is a duplicate packet. Deleting.
+DM id 16 tid 1 eid 16 etid 1 c omnetpp::cMessage n DATA-1 pe 13
+
+E # 14 t 0.170742618959 m 5 ce 8 msg 17
+- INFO:I am node3
+- INFO:I have msg: (omnetpp::cMessage)DATA-1
+- INFO:This is a duplicate packet. Deleting.
+DM id 17 tid 1 eid 17 etid 1 c omnetpp::cMessage n DATA-1 pe 14
+
+E # 15 t 0.174136284395 m 6 ce 11 msg 5
+- INFO:I am node4
+- INFO:I have msg: (omnetpp::cMessage)event
+- INFO:n: 3
+- INFO:Event on non source node.
+- INFO:Sending on k: 0
+CL id 14 tid 1 eid 14 etid 1 c omnetpp::cMessage n DATA-1 pe 11 cid 18
+BS id 18 tid 1 eid 18 etid 1 c omnetpp::cMessage n DATA-1 pe 15
+SH sm 6 sg 1572864 pd 0.01
+ES t 0.184136284395
+CL id 18 tid 1 eid 18 etid 1 c omnetpp::cMessage n DATA-1 pe 15 cid 19
+- INFO:Sending on k: 1
+CL id 14 tid 1 eid 14 etid 1 c omnetpp::cMessage n DATA-1 pe 15 cid 19
+BS id 19 tid 1 eid 19 etid 1 c omnetpp::cMessage n DATA-1 pe 15
+SH sm 6 sg 1572865 pd 0.01
+ES t 0.184136284395
+CL id 19 tid 1 eid 19 etid 1 c omnetpp::cMessage n DATA-1 pe 15 cid 20
+- INFO:Sending on k: 2
+CL id 14 tid 1 eid 14 etid 1 c omnetpp::cMessage n DATA-1 pe 15 cid 20
+BS id 20 tid 1 eid 20 etid 1 c omnetpp::cMessage n DATA-1 pe 15
+SH sm 6 sg 1572866 pd 0.01
+ES t 0.184136284395
+CL id 20 tid 1 eid 20 etid 1 c omnetpp::cMessage n DATA-1 pe 15 cid 21
+
+E # 16 t 0.184136284395 m 4 ce 15 msg 18
+- INFO:I am node2
+- INFO:I have msg: (omnetpp::cMessage)DATA-1
+- INFO:This is a duplicate packet. Deleting.
+DM id 18 tid 1 eid 18 etid 1 c omnetpp::cMessage n DATA-1 pe 16
+
+E # 17 t 0.184136284395 m 5 ce 15 msg 19
+- INFO:I am node3
+- INFO:I have msg: (omnetpp::cMessage)DATA-1
+- INFO:This is a duplicate packet. Deleting.
+DM id 19 tid 1 eid 19 etid 1 c omnetpp::cMessage n DATA-1 pe 17
+
+E # 18 t 0.184136284395 m 7 ce 15 msg 20
+- INFO:I am node5
+- INFO:I have msg: (omnetpp::cMessage)DATA-1
+- INFO:Message (omnetpp::cMessage)DATA-1 arrived.
+DM id 20 tid 1 eid 20 etid 1 c omnetpp::cMessage n DATA-1 pe 18
+
+E # 19 t 1.707119181827 m 2 ce 1 msg 0
+- INFO:I am node0
+- INFO:I have msg: (omnetpp::cMessage)event
+- INFO:n: 1
+- INFO:Timeout is over, sending msg: (omnetpp::cMessage)DATA-2 on k: 0
+CL id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n DATA-2 pe 1 cid 21
+BS id 21 tid 8 eid 21 etid 8 c omnetpp::cMessage n DATA-2 pe 19
+SH sm 2 sg 1572864 pd 0.01
+ES t 1.717119181827
+CL id 21 tid 8 eid 21 etid 8 c omnetpp::cMessage n DATA-2 pe 19 cid 22
+CM id 22 tid 22 eid 22 etid 22 c omnetpp::cMessage n DATA-3 pe -1
+- INFO:scheduling new msg: DATA-3
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 19
+ES t 3.184784293482
+
+E # 20 t 1.717119181827 m 3 ce 19 msg 21
+- INFO:I am node1
+- INFO:I have msg: (omnetpp::cMessage)DATA-2
+- INFO:This is the first time we receive this message.
+- INFO:forwarding msg: (omnetpp::cMessage)DATA-2
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n event pe 3
+ES t 1.73384129383
+
+E # 21 t 1.73384129383 m 3 ce 20 msg 2
+- INFO:I am node1
+- INFO:I have msg: (omnetpp::cMessage)event
+- INFO:n: 3
+- INFO:Event on non source node.
+- INFO:Sending on k: 0
+CL id 21 tid 8 eid 21 etid 8 c omnetpp::cMessage n DATA-2 pe 20 cid 23
+BS id 23 tid 8 eid 23 etid 8 c omnetpp::cMessage n DATA-2 pe 21
+SH sm 3 sg 1572864 pd 0.01
+ES t 1.74384129383
+CL id 23 tid 8 eid 23 etid 8 c omnetpp::cMessage n DATA-2 pe 21 cid 24
+- INFO:Sending on k: 1
+CL id 21 tid 8 eid 21 etid 8 c omnetpp::cMessage n DATA-2 pe 21 cid 24
+BS id 24 tid 8 eid 24 etid 8 c omnetpp::cMessage n DATA-2 pe 21
+SH sm 3 sg 1572865 pd 0.01
+ES t 1.74384129383
+CL id 24 tid 8 eid 24 etid 8 c omnetpp::cMessage n DATA-2 pe 21 cid 25
+- INFO:Sending on k: 2
+CL id 21 tid 8 eid 21 etid 8 c omnetpp::cMessage n DATA-2 pe 21 cid 25
+BS id 25 tid 8 eid 25 etid 8 c omnetpp::cMessage n DATA-2 pe 21
+SH sm 3 sg 1572866 pd 0.01
+ES t 1.74384129383
+CL id 25 tid 8 eid 25 etid 8 c omnetpp::cMessage n DATA-2 pe 21 cid 26
+
+E # 22 t 1.74384129383 m 2 ce 21 msg 23
+- INFO:I am node0
+- INFO:I have msg: (omnetpp::cMessage)DATA-2
+- INFO:This is the first time we receive this message.
+- INFO:forwarding msg: (omnetpp::cMessage)DATA-2
+SE e 1 c 9 m "scheduleAt(): Message (omnetpp::cMessage)event is currently scheduled, use cancelEvent() before rescheduling"

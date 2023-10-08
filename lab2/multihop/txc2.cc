@@ -69,7 +69,6 @@ void Txc2::handleMessage(cMessage *msg)
 	// if event
 	if (msg == event)
 	{
-		// cancelEvent(event);
 		//  Send buffered message
 		int n = gateSize("gate");
 		EV << "n: " << n << "\n";
@@ -78,20 +77,28 @@ void Txc2::handleMessage(cMessage *msg)
 		if (getIndex() == 0)
 		{
 			int k = n - 1;
-			//EV << "Timeout is over, sending msg: " << multihopMsg << " on k: " << k << "\n";
-			//send(multihopMsg, "gate$o", k);
-			for (int i = 0; i < n; i++)
-			{
-				EV << "Sending on k: " << i << "\n";
-				send(multihopMsg->dup(), "gate$o", i);
-				txVector.record(numSent);
-				numSent++;
-			}
-			duplicatePacketList.push_back(multihopMsg->getTreeId());
-			//txVector.record(numSent);
-			//numSent++;
+
+			// #### SIMPLE FORWARD ####
+			// for (int i = 0; i < n; i++)
+			// {
+			// 	EV << "Sending on k: " << i << "\n";
+			// 	send(multihopMsg->dup(), "gate$o", i);
+			// 	txVector.record(numSent);
+			// 	numSent++;
+			// }
+			// duplicatePacketList.push_back(multihopMsg->getTreeId());
+			// multihopMsg = nullptr;
+			// #########################
+
+			// #### RANDOM NEXT HOP ####
+			EV << "Timeout is over, sending msg: " << multihopMsg << " on k: " << k << "\n";
+			send(multihopMsg->dup(), "gate$o", k);
+			txVector.record(numSent);
+			numSent++;
+			duplicatePacketList.push_back(msg->getTreeId());
 			multihopMsg = nullptr;
-			//msgCounter++;
+			msgCounter++;
+			// #########################
 
 			// schedule new message
 			char msgname[20];
@@ -105,15 +112,7 @@ void Txc2::handleMessage(cMessage *msg)
 			EV << "Event on non source node."
 			   << "\n";
 
-			// int kMin = 1;
-			//  prevents backflow in node4
-			//  if (getIndex() == 4)
-			//  {
-			//  	kMin = 2;
-			//  }
-
-			// int k = intuniform(kMin, n - 1);
-
+			// #### SIMPLE FORWARD ####
 			for (int i = 0; i < n; i++)
 			{
 				EV << "Sending on k: " << i << "\n";
@@ -122,6 +121,22 @@ void Txc2::handleMessage(cMessage *msg)
 				numSent++;
 			}
 			multihopMsg = nullptr;
+			// #########################
+
+			// #### RANDOM NEXT HOP ####
+			// int kMin = 1;
+			//  prevents backflow in node4
+			//  if (getIndex() == 4)
+			//  {
+			//  	kMin = 2;
+			//  }
+
+			// int k = intuniform(kMin, n - 1);
+			// send(multihopMsg, "gate$o", k);
+			// txVector.record(numSent);
+			// numSent++;
+			// multihopMsg = nullptr;
+			// #########################
 		}
 	}
 	else
