@@ -1,5 +1,7 @@
 #include <cstring>
 #include <omnetpp.h>
+#include <vector>
+#include <algorithm>
 
 using namespace omnetpp;
 
@@ -11,7 +13,7 @@ private:
 	long msgCounter;
 	long numSent;
 	long numReceived;
-	double timeReceived;
+	std::vector<long> duplicatePacketList;
 	double lossProbability;
 	cOutVector txVector;
 	cOutVector rxVector;
@@ -92,21 +94,24 @@ void Txc2::handleMessage(cMessage *msg)
 		{
 			EV << "Event on non source node."
 			   << "\n";
-			
-			int kMin = 1;
 
-			// prevents backflow in node4
-			if (getIndex() == 4)
+			// int kMin = 1;
+			//  prevents backflow in node4
+			//  if (getIndex() == 4)
+			//  {
+			//  	kMin = 2;
+			//  }
+
+			// int k = intuniform(kMin, n - 1);
+
+			for (int i = 0; i < n; i++)
 			{
-				kMin = 2;
+				EV << "Sending on k: " << k << "\n";
+				send(multihopMsg, "gate$o", i);
+				txVector.record(numSent);
+				numSent++;
+				multihopMsg = nullptr;
 			}
-			
-			int k = intuniform(kMin, n - 1);
-			EV << "Sending on k: " << k << "\n";
-			send(multihopMsg, "gate$o", k);
-			txVector.record(numSent);
-			numSent++;
-			multihopMsg = nullptr;
 		}
 	}
 	else
@@ -130,7 +135,20 @@ void Txc2::handleMessage(cMessage *msg)
 			}
 			else
 			{
-				forwardMessage(msg);
+
+				if (std::find(duplicatePacketList.begin(), duplicatePacketList.end(), msg->getTreeiD()) != duplicatePacketList.end())
+				{
+					EV << "This is a duplicate packet. Deleting."
+					   << "\n";
+					delete msg;
+				}
+				else
+				{
+					EV << "This is the first time we receive this message"
+					   << "\n";
+					duplicatePacketList.push_back(msg->getTreeId());
+					forwardMessage(msg);
+				}
 			}
 		}
 	}
