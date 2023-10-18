@@ -1,0 +1,35 @@
+file 25570 1695337792                                           
+version 2
+run General-1-20230921-23:09:52-8355
+attr configname General
+attr datetime 20230921-23:09:52
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Network1
+attr processid 8355
+attr repetition 1
+attr replication #1
+attr resultdir results
+attr runnumber 1
+attr seedset 1
+param Network1.node[*].transmissionTime "uniform(1s, 2s)"
+param Network1.node[*].delayTime "uniform(0.01s, 0.2s)"
+param Network1.node[*].processingTime exponential(0.01s)
+param Network1.node[*].lossProbability 0.0
+
+vector 0 Network1.node[0] txVector ETV
+vector 1 Network1.node[1] txVector ETV
+vector 2 Network1.node[3] txVector ETV
+vector 3 Network1.node[4] txVector ETV
+vector 4 Network1.node[5] rxVector ETV
+vector 5 Network1.node[2] txVector ETV
+0	801 4225 1 1571 0.089234179703 239.162307259276 162 0 161 13041 1404081
+1	5026 4218 3 1573 0.126198958082 239.179538441417 162 0 161 13041 1404081
+2	9244 3770 5 1565 0.139799085561 237.848461592703 145 0 144 10440 1005720
+3	13014 4222 7 1577 0.152492125138 239.212492715627 162 0 161 13041 1404081
+4	17236 4224 8 1578 0.162492125138 239.222492715627 162 0 161 13041 1404081
+5	21460 4109 13 1575 2.138075712781 239.191677257448 158 0 157 12403 1302315
+

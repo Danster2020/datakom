@@ -1,0 +1,34 @@
+version 2
+run General-2-20231008-05:33:00-14160
+attr configname General
+attr datetime 20231008-05:33:00
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Reliability
+attr processid 14160
+attr repetition 2
+attr replication #2
+attr resultdir results
+attr runnumber 2
+attr seedset 2
+param Reliability.node[*].transmissionTime "uniform(1s, 2s)"
+param Reliability.node[*].delayTime "uniform(0.01s, 0.2s)"
+param Reliability.node[*].processingTime exponential(0.01s)
+param Reliability.node[*].lossProbability 0.1
+
+scalar Reliability.node[0] #Sent 163
+scalar Reliability.node[0] #received 0
+scalar Reliability.node[1] #Sent 429
+scalar Reliability.node[1] #received 0
+scalar Reliability.node[2] #Sent 280
+scalar Reliability.node[2] #received 0
+scalar Reliability.node[3] #Sent 280
+scalar Reliability.node[3] #received 0
+scalar Reliability.node[4] #Sent 414
+scalar Reliability.node[4] #received 0
+scalar Reliability.node[5] #Sent 0
+scalar Reliability.node[5] #received 124
+
